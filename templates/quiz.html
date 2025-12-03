@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block title %}Quiz - CyberQuiz{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <h2 class="mb-4"><i class="bi bi-question-circle"></i> Cybersecurity Quiz</h2>
+        
+        <div class="card mb-3">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="badge bg-info">{{ question.category|title }}</span>
+                        <span class="badge bg-{{ 'success' if question.difficulty == 'easy' else 'warning' if question.difficulty == 'medium' else 'danger' }}">
+                            {{ question.difficulty|title }}
+                        </span>
+                    </div>
+                    <div class="col-md-6 text-end">
+                        <span class="badge bg-primary">
+                            {% if question.difficulty == 'easy' %}10 XP
+                            {% elif question.difficulty == 'medium' %}20 XP
+                            {% else %}30 XP{% endif %}
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title mb-4">{{ question.question_text }}</h5>
+                
+                <form method="POST" action="{{ url_for('quiz') }}">
+                    <input type="hidden" name="question_id" value="{{ question.id }}">
+                    
+                    {% if question.question_type == 'multiple_choice' and options %}
+                        {% for option in options %}
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="radio" name="answer" id="option{{ loop.index }}" value="{{ option }}" required>
+                            <label class="form-check-label" for="option{{ loop.index }}">
+                                {{ option }}
+                            </label>
+                        </div>
+                        {% endfor %}
+                    {% elif question.question_type == 'true_false' %}
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="radio" name="answer" id="true" value="True" required>
+                            <label class="form-check-label" for="true">True</label>
+                        </div>
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="radio" name="answer" id="false" value="False" required>
+                            <label class="form-check-label" for="false">False</label>
+                        </div>
+                    {% else %}
+                        <div class="mb-3">
+                            <label for="answer" class="form-label">Your Answer:</label>
+                            <textarea class="form-control" id="answer" name="answer" rows="3" required></textarea>
+                        </div>
+                    {% endif %}
+                    
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary btn-lg">Submit Answer</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <a href="{{ url_for('quiz', difficulty=difficulty, category=category) }}" class="btn btn-outline-secondary">
+                <i class="bi bi-arrow-clockwise"></i> Get New Question
+            </a>
+            <a href="{{ url_for('quiz', difficulty=difficulty, category=category, use_openai='true') }}" class="btn btn-outline-primary">
+                <i class="bi bi-magic"></i> Generate with AI
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

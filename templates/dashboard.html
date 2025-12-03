@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - CyberQuiz{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <h2 class="mb-4"><i class="bi bi-speedometer2"></i> Welcome, {{ user.username }}!</h2>
+        
+        <div class="row mb-4">
+            <div class="col-md-4">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h3 class="card-title"><i class="bi bi-star-fill text-warning"></i></h3>
+                        <h2 class="card-text">{{ user.total_xp }}</h2>
+                        <p class="text-muted">Total XP</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h3 class="card-title"><i class="bi bi-trophy text-success"></i></h3>
+                        <h2 class="card-text">{{ user.progress|selectattr('answered_correctly')|list|length }}</h2>
+                        <p class="text-muted">Correct Answers</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h3 class="card-title"><i class="bi bi-question-circle text-info"></i></h3>
+                        <h2 class="card-text">{{ user.progress|length }}</h2>
+                        <p class="text-muted">Questions Answered</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-grid gap-2 mb-4">
+            <a href="{{ url_for('quiz') }}" class="btn btn-primary btn-lg">
+                <i class="bi bi-play-circle"></i> Start Quiz
+            </a>
+        </div>
+
+        <h4 class="mb-3">Recent Activity</h4>
+        {% if recent_progress %}
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Question</th>
+                        <th>Result</th>
+                        <th>XP Earned</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for progress in recent_progress %}
+                    <tr>
+                        <td>{{ progress.question.question_text[:50] }}...</td>
+                        <td>
+                            {% if progress.answered_correctly %}
+                                <span class="badge bg-success">Correct</span>
+                            {% else %}
+                                <span class="badge bg-danger">Incorrect</span>
+                            {% endif %}
+                        </td>
+                        <td>{{ progress.xp_earned }} XP</td>
+                        <td>{{ progress.answered_at.strftime('%Y-%m-%d %H:%M') }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <p class="text-muted">No activity yet. Start taking quizzes to earn XP!</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+

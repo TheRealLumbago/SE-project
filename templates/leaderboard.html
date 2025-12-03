@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}Leaderboard - CyberQuiz{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <h2 class="mb-4"><i class="bi bi-trophy"></i> Leaderboard</h2>
+        
+        {% if users %}
+        <div class="table-responsive">
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Username</th>
+                        <th>Total XP</th>
+                        <th>Badge</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                    <tr {% if session.user_id and user.id == session.user_id %}class="table-primary"{% endif %}>
+                        <td>
+                            {% if loop.index == 1 %}
+                                <i class="bi bi-trophy-fill text-warning"></i> {{ loop.index }}
+                            {% elif loop.index == 2 %}
+                                <i class="bi bi-trophy-fill text-secondary"></i> {{ loop.index }}
+                            {% elif loop.index == 3 %}
+                                <i class="bi bi-trophy-fill text-danger"></i> {{ loop.index }}
+                            {% else %}
+                                {{ loop.index }}
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if session.user_id and user.id == session.user_id %}
+                                <strong>{{ user.username }} (You)</strong>
+                            {% else %}
+                                {{ user.username }}
+                            {% endif %}
+                        </td>
+                        <td><span class="badge bg-primary">{{ user.total_xp }} XP</span></td>
+                        <td>
+                            {% if user.total_xp >= 1000 %}
+                                <span class="badge bg-danger">Master</span>
+                            {% elif user.total_xp >= 500 %}
+                                <span class="badge bg-warning">Expert</span>
+                            {% elif user.total_xp >= 200 %}
+                                <span class="badge bg-info">Advanced</span>
+                            {% elif user.total_xp >= 50 %}
+                                <span class="badge bg-success">Intermediate</span>
+                            {% else %}
+                                <span class="badge bg-secondary">Beginner</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <p class="text-muted">No users found. Be the first to take a quiz!</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+

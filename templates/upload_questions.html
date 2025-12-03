@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+
+{% block title %}Upload Questions - CyberQuiz{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <h2 class="mb-4"><i class="bi bi-cloud-upload"></i> Upload Questions</h2>
+        
+        <ul class="nav nav-tabs mb-4" id="uploadTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="manual-tab" data-bs-toggle="tab" data-bs-target="#manual" type="button">
+                    <i class="bi bi-pencil"></i> Manual Entry
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="csv-tab" data-bs-toggle="tab" data-bs-target="#csv" type="button">
+                    <i class="bi bi-file-earmark-spreadsheet"></i> CSV Upload
+                </button>
+            </li>
+        </ul>
+
+        <div class="tab-content" id="uploadTabsContent">
+            <!-- Manual Entry Tab -->
+            <div class="tab-pane fade show active" id="manual" role="tabpanel">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title mb-4">Add Question Manually</h5>
+                        <form method="POST" action="{{ url_for('upload_questions') }}">
+                            <div class="mb-3">
+                                <label for="question_text" class="form-label">Question Text *</label>
+                                <textarea class="form-control" id="question_text" name="question_text" rows="3" required></textarea>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="question_type" class="form-label">Question Type *</label>
+                                    <select class="form-select" id="question_type" name="question_type" required>
+                                        <option value="">Select type...</option>
+                                        <option value="multiple_choice">Multiple Choice</option>
+                                        <option value="true_false">True/False</option>
+                                        <option value="short_answer">Short Answer</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="col-md-6 mb-3">
+                                    <label for="difficulty" class="form-label">Difficulty *</label>
+                                    <select class="form-select" id="difficulty" name="difficulty" required>
+                                        <option value="">Select difficulty...</option>
+                                        <option value="easy">Easy (10 XP)</option>
+                                        <option value="medium">Medium (20 XP)</option>
+                                        <option value="hard">Hard (30 XP)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="category" class="form-label">Category *</label>
+                                <input type="text" class="form-control" id="category" name="category" 
+                                       placeholder="e.g., phishing, malware, social engineering" required>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="options" class="form-label">Options (for multiple choice, comma-separated)</label>
+                                <input type="text" class="form-control" id="options" name="options" 
+                                       placeholder="e.g., Option A, Option B, Option C, Option D">
+                                <small class="form-text text-muted">Leave empty for True/False or Short Answer questions</small>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="correct_answer" class="form-label">Correct Answer *</label>
+                                <input type="text" class="form-control" id="correct_answer" name="correct_answer" required>
+                                <small class="form-text text-muted">For multiple choice, enter the exact option text</small>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">
+                                <i class="bi bi-plus-circle"></i> Add Question
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CSV Upload Tab -->
+            <div class="tab-pane fade" id="csv" role="tabpanel">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title mb-4">Upload Questions via CSV</h5>
+                        <form method="POST" action="{{ url_for('upload_csv') }}" enctype="multipart/form-data">
+                            <div class="mb-3">
+                                <label for="file" class="form-label">CSV File</label>
+                                <input type="file" class="form-control" id="file" name="file" accept=".csv" required>
+                            </div>
+                            
+                            <div class="alert alert-info">
+                                <h6><i class="bi bi-info-circle"></i> CSV Format Requirements:</h6>
+                                <p class="mb-0">Your CSV file must contain the following columns:</p>
+                                <ul class="mb-0">
+                                    <li><strong>question_text</strong> - The question text</li>
+                                    <li><strong>question_type</strong> - multiple_choice, true_false, or short_answer</li>
+                                    <li><strong>correct_answer</strong> - The correct answer</li>
+                                    <li><strong>category</strong> - Question category (e.g., phishing, malware)</li>
+                                    <li><strong>difficulty</strong> - easy, medium, or hard</li>
+                                    <li><strong>options</strong> - (Optional) Comma-separated options for multiple choice</li>
+                                </ul>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">
+                                <i class="bi bi-upload"></i> Upload CSV
+                            </button>
+                        </form>
+                        
+                        <div class="mt-4">
+                            <h6>Example CSV:</h6>
+                            <pre class="bg-light p-3 rounded"><code>question_text,question_type,correct_answer,category,difficulty,options
+"What is phishing?",multiple_choice,"A type of cyber attack","phishing",easy,"A type of cyber attack,A type of fish,A programming language,A database"
+"Phishing attacks always come via email.",true_false,"False","phishing",medium,
+"What is two-factor authentication?",short_answer,"An authentication method requiring two forms of verification","authentication",hard,</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
