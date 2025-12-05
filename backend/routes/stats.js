@@ -13,15 +13,20 @@ router.get('/', authenticateToken, async (req, res) => {
       [userId]
     );
 
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
     // Get level info
+    const currentLevel = user.current_level || 1;
     const level = await db.getAsync(
       'SELECT * FROM level WHERE level_number = ?',
-      [user.current_level]
+      [currentLevel]
     );
 
     const nextLevel = await db.getAsync(
       'SELECT * FROM level WHERE level_number > ? ORDER BY level_number ASC LIMIT 1',
-      [user.current_level]
+      [currentLevel]
     );
 
     // Get progress stats
@@ -72,7 +77,8 @@ router.get('/', authenticateToken, async (req, res) => {
     });
   } catch (error) {
     console.error('Stats error:', error);
-    res.status(500).json({ error: 'Internal server error' });
+    console.error('Error stack:', error.stack);
+    res.status(500).json({ error: 'Internal server error', details: process.env.NODE_ENV === 'development' ? error.message : undefined });
   }
 });
 

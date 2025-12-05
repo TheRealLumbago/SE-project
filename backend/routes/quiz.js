@@ -13,10 +13,10 @@ router.get('/', authenticateToken, async (req, res) => {
 
     // Get list of question IDs user has already answered
     const answeredQuestions = await db.allAsync(
-      'SELECT DISTINCT question_id FROM user_progress WHERE user_id = ?',
+      'SELECT DISTINCT question_id FROM user_progress WHERE user_id = ? AND question_id IS NOT NULL',
       [userId]
     );
-    const answeredIds = answeredQuestions.map(q => q.question_id);
+    const answeredIds = answeredQuestions.map(q => q.question_id).filter(id => id != null);
 
     // Only fetch multiple_choice and true_false questions that user hasn't answered
     let query = 'SELECT * FROM question WHERE question_type IN (?, ?)';
@@ -105,16 +105,6 @@ router.get('/', authenticateToken, async (req, res) => {
       }
     }
 
-    // Parse options if present
-    let options = null;
-    if (randomQuestion.options) {
-      try {
-        options = JSON.parse(randomQuestion.options);
-      } catch (e) {
-        options = [randomQuestion.options];
-      }
-    }
-
     res.json({
       question: {
         id: randomQuestion.id,
@@ -131,7 +121,8 @@ router.get('/', authenticateToken, async (req, res) => {
     });
   } catch (error) {
     console.error('Get question error:', error);
-    res.status(500).json({ error: 'Internal server error' });
+    console.error('Error stack:', error.stack);
+    res.status(500).json({ error: 'Internal server error', details: process.env.NODE_ENV === 'development' ? error.message : undefined });
   }
 });
 

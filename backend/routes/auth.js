@@ -39,14 +39,30 @@ router.post('/register', async (req, res) => {
       [result.lastID]
     );
 
+    if (!newUser) {
+      return res.status(500).json({ error: 'Failed to retrieve created user' });
+    }
+
     res.status(201).json({
       message: 'User registered successfully',
       token,
-      user: newUser
+      user: {
+        id: newUser.id,
+        username: newUser.username,
+        email: newUser.email,
+        total_xp: newUser.total_xp || 0,
+        role: newUser.role || 'learner',
+        current_level: newUser.current_level || 1,
+        daily_streak: newUser.daily_streak || 0
+      }
     });
   } catch (error) {
     console.error('Registration error:', error);
-    res.status(500).json({ error: 'Internal server error' });
+    console.error('Error stack:', error.stack);
+    res.status(500).json({ 
+      error: 'Internal server error',
+      details: process.env.NODE_ENV === 'development' ? error.message : undefined
+    });
   }
 });
 
@@ -78,6 +94,20 @@ router.post('/login', async (req, res) => {
 
     const token = generateToken({ id: user.id, username: user.username });
 
+    // Ensure user has default values for new fields (for old users)
+    if (user.role === null || user.role === undefined) {
+      await db.runAsync('UPDATE user SET role = ? WHERE id = ?', ['learner', user.id]);
+      user.role = 'learner';
+    }
+    if (user.current_level === null || user.current_level === undefined) {
+      await db.runAsync('UPDATE user SET current_level = ? WHERE id = ?', [1, user.id]);
+      user.current_level = 1;
+    }
+    if (user.daily_streak === null || user.daily_streak === undefined) {
+      await db.runAsync('UPDATE user SET daily_streak = ? WHERE id = ?', [0, user.id]);
+      user.daily_streak = 0;
+    }
+
     res.json({
       message: 'Login successful',
       token,
@@ -85,7 +115,7 @@ router.post('/login', async (req, res) => {
         id: user.id,
         username: user.username,
         email: user.email,
-        total_xp: user.total_xp,
+        total_xp: user.total_xp || 0,
         role: user.role || 'learner',
         current_level: user.current_level || 1,
         daily_streak: user.daily_streak || 0
@@ -93,7 +123,11 @@ router.post('/login', async (req, res) => {
     });
   } catch (error) {
     console.error('Login error:', error);
-    res.status(500).json({ error: 'Internal server error' });
+    console.error('Error stack:', error.stack);
+    res.status(500).json({ 
+      error: 'Internal server error', 
+      details: process.env.NODE_ENV === 'development' ? error.message : undefined 
+    });
   }
 });
 

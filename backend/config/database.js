@@ -77,7 +77,117 @@ function initializeDatabase() {
       (5, 'Expert', 1000, 'Cybersecurity professional'),
       (6, 'Master', 2000, 'Advanced cybersecurity expert'),
       (7, 'Grandmaster', 3500, 'Elite cybersecurity specialist')
-    `);
+    `, () => {
+      // Run migrations after all tables are created
+      migrateDatabase();
+    });
+  });
+}
+
+// Migration function to add new columns to existing tables
+function migrateDatabase() {
+  db.serialize(() => {
+    // Check and add missing columns to user table
+    db.all("PRAGMA table_info(user)", (err, columns) => {
+      if (err) {
+        console.error('Error checking user table columns:', err);
+        return;
+      }
+      
+      const columnNames = columns.map(col => col.name);
+      
+      // Add role column if it doesn't exist
+      if (!columnNames.includes('role')) {
+        db.run("ALTER TABLE user ADD COLUMN role TEXT DEFAULT 'learner'", (err) => {
+          if (err) console.error('Error adding role column:', err);
+          else console.log('Added role column to user table');
+        });
+      }
+      
+      // Add current_level column if it doesn't exist
+      if (!columnNames.includes('current_level')) {
+        db.run("ALTER TABLE user ADD COLUMN current_level INTEGER DEFAULT 1", (err) => {
+          if (err) console.error('Error adding current_level column:', err);
+          else console.log('Added current_level column to user table');
+        });
+      }
+      
+      // Add daily_streak column if it doesn't exist
+      if (!columnNames.includes('daily_streak')) {
+        db.run("ALTER TABLE user ADD COLUMN daily_streak INTEGER DEFAULT 0", (err) => {
+          if (err) console.error('Error adding daily_streak column:', err);
+          else console.log('Added daily_streak column to user table');
+        });
+      }
+      
+      // Add last_activity_date column if it doesn't exist
+      if (!columnNames.includes('last_activity_date')) {
+        db.run("ALTER TABLE user ADD COLUMN last_activity_date DATE", (err) => {
+          if (err) console.error('Error adding last_activity_date column:', err);
+          else console.log('Added last_activity_date column to user table');
+        });
+      }
+    });
+    
+    // Check and add missing columns to question table
+    db.all("PRAGMA table_info(question)", (err, columns) => {
+      if (err) {
+        console.error('Error checking question table columns:', err);
+        return;
+      }
+      
+      const columnNames = columns.map(col => col.name);
+      
+      // Add hint column if it doesn't exist
+      if (!columnNames.includes('hint')) {
+        db.run("ALTER TABLE question ADD COLUMN hint TEXT", (err) => {
+          if (err) console.error('Error adding hint column:', err);
+          else console.log('Added hint column to question table');
+        });
+      }
+      
+      // Add level_required column if it doesn't exist
+      if (!columnNames.includes('level_required')) {
+        db.run("ALTER TABLE question ADD COLUMN level_required INTEGER DEFAULT 1", (err) => {
+          if (err) console.error('Error adding level_required column:', err);
+          else console.log('Added level_required column to question table');
+        });
+      }
+      
+      // Add time_limit column if it doesn't exist
+      if (!columnNames.includes('time_limit')) {
+        db.run("ALTER TABLE question ADD COLUMN time_limit INTEGER DEFAULT 300", (err) => {
+          if (err) console.error('Error adding time_limit column:', err);
+          else console.log('Added time_limit column to question table');
+        });
+      }
+    });
+    
+    // Check and add missing columns to user_progress table
+    db.all("PRAGMA table_info(user_progress)", (err, columns) => {
+      if (err) {
+        console.error('Error checking user_progress table columns:', err);
+        return;
+      }
+      
+      const columnNames = columns.map(col => col.name);
+      
+      // Add time_taken column if it doesn't exist
+      if (!columnNames.includes('time_taken')) {
+        db.run("ALTER TABLE user_progress ADD COLUMN time_taken INTEGER", (err) => {
+          if (err) console.error('Error adding time_taken column:', err);
+          else console.log('Added time_taken column to user_progress table');
+        });
+      }
+      
+      // Add hints_used column if it doesn't exist
+      if (!columnNames.includes('hints_used')) {
+        db.run("ALTER TABLE user_progress ADD COLUMN hints_used INTEGER DEFAULT 0", (err) => {
+          if (err) console.error('Error adding hints_used column:', err);
+          else console.log('Added hints_used column to user_progress table');
+        });
+      }
+    });
   });
 }
 
