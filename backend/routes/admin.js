@@ -42,7 +42,7 @@ router.put('/questions/:id', authenticateToken, requireAdmin, async (req, res) =
        SET question_text = ?, question_type = ?, correct_answer = ?, category = ?, 
            difficulty = ?, hint = ?, level_required = ?, time_limit = ?, options = ?
        WHERE id = ?`,
-      [question_text, question_type, correct_answer, category, difficulty, hint || null, level_required || 1, time_limit || 300, optionsJson, req.params.id]
+      [question_text, question_type, correct_answer, category, difficulty, hint || null, level_required || 1, time_limit || 30, optionsJson, req.params.id]
     );
 
     res.json({ message: 'Question updated successfully' });
@@ -84,10 +84,66 @@ router.put('/users/:id/role', authenticateToken, requireAdmin, async (req, res) 
       return res.status(400).json({ error: 'Invalid role' });
     }
     
+    // Prevent admin from removing their own admin role
+    if (req.params.id == req.user.id && role !== 'admin') {
+      return res.status(400).json({ error: 'You cannot remove your own admin role' });
+    }
+    
     await db.runAsync('UPDATE user SET role = ? WHERE id = ?', [role, req.params.id]);
     res.json({ message: 'User role updated successfully' });
   } catch (error) {
     console.error('Update user role error:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// Delete user (admin)
+router.delete('/users/:id', authenticateToken, requireAdmin, async (req, res) => {
+  try {
+    const userId = req.params.id;
+    
+    // Prevent admin from deleting themselves
+    if (userId == req.user.id) {
+      return res.status(400).json({ error: 'You cannot delete your own account' });
+    }
+    
+    // Delete user progress first (foreign key constraint)
+    await db.runAsync('DELETE FROM user_progress WHERE user_id = ?', [userId]);
+    
+    // Delete questions created by user
+    await db.runAsync('DELETE FROM question WHERE created_by = ?', [userId]);
+    
+    // Delete user
+    await db.runAsync('DELETE FROM user WHERE id = ?', [userId]);
+    
+    res.json({ message: 'User deleted successfully' });
+  } catch (error) {
+    console.error('Delete user error:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// Get user details (admin)
+router.get('/users/:id', authenticateToken, requireAdmin, async (req, res) => {
+  try {
+    const user = await db.getAsync(
+      'SELECT id, username, email, total_xp, role, current_level, daily_streak, created_at FROM user WHERE id = ?',
+      [req.params.id]
+    );
+    
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+    
+    // Get user's progress stats
+    const progress = await db.allAsync(
+      'SELECT COUNT(*) as total_answered, SUM(answered_correctly) as correct_count FROM user_progress WHERE user_id = ?',
+      [req.params.id]
+    );
+    
+    res.json({ user, stats: progress[0] || { total_answered: 0, correct_count: 0 } });
+  } catch (error) {
+    console.error('Get user details error:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 });

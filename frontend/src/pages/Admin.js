@@ -56,6 +56,20 @@ function Admin() {
     }
   };
 
+  const handleDeleteUser = async (userId, username) => {
+    if (!window.confirm(`Are you sure you want to delete user "${username}"? This will also delete all their progress and questions. This action cannot be undone!`)) {
+      return;
+    }
+
+    try {
+      await axios.delete(`/api/admin/users/${userId}`);
+      fetchData();
+      alert('User deleted successfully');
+    } catch (error) {
+      alert(error.response?.data?.error || 'Failed to delete user');
+    }
+  };
+
   if (user?.role !== 'admin') {
     return (
       <div className="container">
@@ -81,11 +95,16 @@ function Admin() {
   }
 
   return (
-    <div className="container">
-      <div className="main-content">
-        <h2 className="mb-4"><i className="bi bi-shield-lock"></i> Admin Panel</h2>
+      <div className="container">
+        <div className="main-content">
+          <h2 className="mb-4"><i className="bi bi-shield-lock"></i> Admin Panel</h2>
+          
+          <div className="alert alert-info mb-4">
+            <i className="bi bi-info-circle"></i> <strong>Admin Controls:</strong> Manage questions and user accounts. 
+            Deleting a user will also remove all their progress and questions. You cannot delete your own account.
+          </div>
 
-        <ul className="nav nav-tabs mb-4">
+          <ul className="nav nav-tabs mb-4">
           <li className="nav-item">
             <button
               className={`nav-link ${activeTab === 'questions' ? 'active' : ''}`}
@@ -106,7 +125,12 @@ function Admin() {
 
         {activeTab === 'questions' && (
           <div>
-            <h4 className="mb-3">All Questions ({questions.length})</h4>
+            <div className="d-flex justify-content-between align-items-center mb-3">
+              <h4>All Questions ({questions.length})</h4>
+              <button className="btn btn-sm btn-secondary" onClick={fetchData} title="Refresh">
+                <i className="bi bi-arrow-clockwise"></i> Refresh
+              </button>
+            </div>
             <div className="table-responsive">
               <table className="table table-striped">
                 <thead>
@@ -137,6 +161,7 @@ function Admin() {
                         <button
                           className="btn btn-sm btn-danger"
                           onClick={() => handleDeleteQuestion(q.id)}
+                          title="Delete Question"
                         >
                           <i className="bi bi-trash"></i> Delete
                         </button>
@@ -151,7 +176,12 @@ function Admin() {
 
         {activeTab === 'users' && (
           <div>
-            <h4 className="mb-3">All Users ({users.length})</h4>
+            <div className="d-flex justify-content-between align-items-center mb-3">
+              <h4>All Users ({users.length})</h4>
+              <button className="btn btn-sm btn-secondary" onClick={fetchData} title="Refresh">
+                <i className="bi bi-arrow-clockwise"></i> Refresh
+              </button>
+            </div>
             <div className="table-responsive">
               <table className="table table-striped">
                 <thead>
@@ -181,15 +211,32 @@ function Admin() {
                         </span>
                       </td>
                       <td>
-                        <select
-                          className="form-select form-select-sm"
-                          value={u.role}
-                          onChange={(e) => handleUpdateUserRole(u.id, e.target.value)}
-                        >
-                          <option value="learner">Learner</option>
-                          <option value="instructor">Instructor</option>
-                          <option value="admin">Admin</option>
-                        </select>
+                        <div className="d-flex gap-2 align-items-center">
+                          <select
+                            className="form-select form-select-sm"
+                            style={{ width: '120px' }}
+                            value={u.role}
+                            onChange={(e) => handleUpdateUserRole(u.id, e.target.value)}
+                          >
+                            <option value="learner">Learner</option>
+                            <option value="instructor">Instructor</option>
+                            <option value="admin">Admin</option>
+                          </select>
+                          {u.id !== user.id && (
+                            <button
+                              className="btn btn-sm btn-danger"
+                              onClick={() => handleDeleteUser(u.id, u.username)}
+                              title="Delete User"
+                            >
+                              <i className="bi bi-trash"></i>
+                            </button>
+                          )}
+                          {u.id === user.id && (
+                            <span className="badge bg-secondary" title="Cannot delete your own account">
+                              You
+                            </span>
+                          )}
+                        </div>
                       </td>
                     </tr>
                   ))}

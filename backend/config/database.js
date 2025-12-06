@@ -39,7 +39,7 @@ function initializeDatabase() {
       difficulty TEXT NOT NULL,
       hint TEXT,
       level_required INTEGER DEFAULT 1,
-      time_limit INTEGER DEFAULT 300,
+      time_limit INTEGER DEFAULT 30,
       created_by INTEGER,
       created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
       FOREIGN KEY (created_by) REFERENCES user(id)
@@ -156,7 +156,7 @@ function migrateDatabase() {
       
       // Add time_limit column if it doesn't exist
       if (!columnNames.includes('time_limit')) {
-        db.run("ALTER TABLE question ADD COLUMN time_limit INTEGER DEFAULT 300", (err) => {
+        db.run("ALTER TABLE question ADD COLUMN time_limit INTEGER DEFAULT 30", (err) => {
           if (err) console.error('Error adding time_limit column:', err);
           else console.log('Added time_limit column to question table');
         });

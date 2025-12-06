@@ -31,7 +31,7 @@ router.post('/', authenticateToken, async (req, res) => {
     const result = await db.runAsync(
       `INSERT INTO question (question_text, question_type, options, correct_answer, category, difficulty, hint, level_required, time_limit, created_by)
        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-      [question_text, question_type, optionsJson, correct_answer, category, difficulty, hint || null, level_required || 1, time_limit || 300, req.user.id]
+      [question_text, question_type, optionsJson, correct_answer, category, difficulty, hint || null, level_required || 1, time_limit || 30, req.user.id]
     );
 
     res.status(201).json({
@@ -46,7 +46,7 @@ router.post('/', authenticateToken, async (req, res) => {
         difficulty,
         hint: hint || null,
         level_required: level_required || 1,
-        time_limit: time_limit || 300
+        time_limit: time_limit || 30
       }
     });
   } catch (error) {
