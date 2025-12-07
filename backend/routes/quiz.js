@@ -85,7 +85,7 @@ router.get('/', authenticateToken, async (req, res) => {
           category: randomQuestion.category,
           difficulty: randomQuestion.difficulty,
           hint: randomQuestion.hint || null,
-          time_limit: randomQuestion.time_limit || 30,
+          time_limit: Math.min(randomQuestion.time_limit || 30, 30),
           level_required: randomQuestion.level_required || 1
         },
         all_answered: answeredIds.length > 0
@@ -114,7 +114,7 @@ router.get('/', authenticateToken, async (req, res) => {
         category: randomQuestion.category,
         difficulty: randomQuestion.difficulty,
         hint: randomQuestion.hint || null,
-        time_limit: randomQuestion.time_limit || 300,
+        time_limit: Math.min(randomQuestion.time_limit || 30, 30),
         level_required: randomQuestion.level_required || 1
       },
       remaining: questions.length

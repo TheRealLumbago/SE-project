@@ -2,16 +2,31 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
+import { useToast } from '../components/Toast';
 
 function Dashboard() {
   const { user, refreshUser } = useAuth();
+  const { info } = useToast();
   const [stats, setStats] = useState(null);
   const [recentProgress, setRecentProgress] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchStats();
-  }, []);
+    
+    // Show streak reminder if user has a streak
+    const checkStreakReminder = () => {
+      if (user?.daily_streak > 0) {
+        setTimeout(() => {
+          info(`🔥 Keep your streak going! You're on a ${user.daily_streak}-day streak!`, 5000);
+        }, 2000);
+      }
+    };
+    
+    if (user) {
+      checkStreakReminder();
+    }
+  }, [user, info]);
 
   const fetchStats = async () => {
     try {
@@ -46,7 +61,7 @@ function Dashboard() {
         
         <div className="row mb-4">
           <div className="col-md-3">
-            <div className="card text-center">
+            <div className="card text-center dashboard-stat-card">
               <div className="card-body">
                 <h3 className="card-title"><i className="bi bi-star-fill text-warning"></i></h3>
                 <h2 className="card-text">{stats?.total_xp || 0}</h2>
@@ -55,7 +70,7 @@ function Dashboard() {
             </div>
           </div>
           <div className="col-md-3">
-            <div className="card text-center">
+            <div className="card text-center dashboard-stat-card">
               <div className="card-body">
                 <h3 className="card-title"><i className="bi bi-trophy text-success"></i></h3>
                 <h2 className="card-text">{stats?.correct_answers || 0}</h2>
@@ -64,7 +79,7 @@ function Dashboard() {
             </div>
           </div>
           <div className="col-md-3">
-            <div className="card text-center">
+            <div className="card text-center dashboard-stat-card">
               <div className="card-body">
                 <h3 className="card-title"><i className="bi bi-award text-primary"></i></h3>
                 <h2 className="card-text">Level {stats?.current_level || 1}</h2>
@@ -96,20 +111,71 @@ function Dashboard() {
             </div>
           </div>
           <div className="col-md-3">
-            <div className="card text-center">
+            <div className="card text-center dashboard-stat-card">
               <div className="card-body">
                 <h3 className="card-title"><i className="bi bi-fire text-danger"></i></h3>
                 <h2 className="card-text">{stats?.daily_streak || 0}</h2>
                 <p className="text-muted">Day Streak</p>
+                {stats?.daily_streak >= 7 && (
+                  <span className="badge bg-warning mt-2">🔥 Streak Master!</span>
+                )}
               </div>
             </div>
           </div>
         </div>
 
-        <div className="d-grid gap-2 mb-4">
-          <Link to="/quiz" className="btn btn-primary btn-lg">
-            <i className="bi bi-play-circle"></i> Start Quiz
-          </Link>
+        {/* Badges Section */}
+        <div className="card mb-4">
+          <div className="card-body">
+            <h4 className="card-title mb-3"><i className="bi bi-patch-check"></i> Your Badges</h4>
+            <div className="row">
+              <div className="col-md-3 mb-3">
+                <div className="text-center p-3 badge-display">
+                  <div style={{ fontSize: '3rem', lineHeight: '1' }}>
+                    {stats?.total_xp >= 3500 ? '👑' : stats?.total_xp >= 2000 ? '🏆' : stats?.total_xp >= 1000 ? '⭐' : stats?.total_xp >= 500 ? '🎯' : stats?.total_xp >= 250 ? '📚' : stats?.total_xp >= 100 ? '🌱' : '🌱'}
+                  </div>
+                  <div className="mt-2">
+                    <small className="d-block">
+                      {stats?.total_xp >= 3500 ? 'Grandmaster' : stats?.total_xp >= 2000 ? 'Master' : stats?.total_xp >= 1000 ? 'Expert' : stats?.total_xp >= 500 ? 'Advanced' : stats?.total_xp >= 250 ? 'Intermediate' : stats?.total_xp >= 100 ? 'Novice' : 'Beginner'}
+                    </small>
+                  </div>
+                </div>
+              </div>
+              {stats?.daily_streak >= 3 && (
+                <div className="col-md-3 mb-3">
+                  <div className="text-center p-3 badge-display">
+                    <div style={{ fontSize: '3rem', lineHeight: '1' }}>🔥</div>
+                    <div className="mt-2">
+                      <small className="d-block">Streak Badge</small>
+                      <small className="text-muted">{stats.daily_streak} days</small>
+                    </div>
+                  </div>
+                </div>
+              )}
+              {stats?.accuracy >= 80 && (
+                <div className="col-md-3 mb-3">
+                  <div className="text-center p-3 badge-display">
+                    <div style={{ fontSize: '3rem', lineHeight: '1' }}>🎯</div>
+                    <div className="mt-2">
+                      <small className="d-block">Accuracy Master</small>
+                      <small className="text-muted">{stats.accuracy}%</small>
+                    </div>
+                  </div>
+                </div>
+              )}
+              {stats?.correct_answers >= 50 && (
+                <div className="col-md-3 mb-3">
+                  <div className="text-center p-3 badge-display">
+                    <div style={{ fontSize: '3rem', lineHeight: '1' }}>✅</div>
+                    <div className="mt-2">
+                      <small className="d-block">50+ Correct</small>
+                      <small className="text-muted">{stats.correct_answers} answers</small>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
         </div>
 
         <h4 className="mb-3">Recent Activity</h4>

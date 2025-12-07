@@ -7,8 +7,8 @@ router.get('/', async (req, res) => {
     const limit = parseInt(req.query.limit) || 50;
 
     const users = await db.allAsync(
-      'SELECT id, username, total_xp FROM user ORDER BY total_xp DESC LIMIT ?',
-      [limit]
+      'SELECT id, username, total_xp FROM user WHERE role != ? OR role IS NULL ORDER BY total_xp DESC LIMIT ?',
+      ['admin', limit]
     );
 
     res.json({ users });

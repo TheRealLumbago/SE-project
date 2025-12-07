@@ -217,3 +217,95 @@ question_text,question_type,correct_answer,category,difficulty,options
 "What is the role of encryption in secure communication?",multiple_choice,"To protect data in transit","encryption",medium,"To slow communication,To protect data in transit,To delete data,To share passwords"
 "All security vulnerabilities can be patched instantly.",true_false,"False","vulnerabilities",hard,
 
+"In PKI, which attack targets the CA to undermine trust?",multiple_choice,"Compromise of root CA","cryptography","very_hard","Compromise of root CA,Replay attack,Privilege escalation,Side-channel attack"
+"True or False: Perfect Forward Secrecy prevents compromise of past sessions even if long-term keys are exposed.",true_false,"True","cryptography","very_hard",
+"Which protocol weakness allows downgrade attacks during TLS negotiation?",multiple_choice,"Support for legacy cipher suites","network security","very_hard","Key pinning,Support for legacy cipher suites,Strict HSTS enforcement,OCSP stapling"
+"True or False: DNSSEC prevents all DNS-based attacks.",true_false,"False","network security","very_hard",
+"In Kerberos, which ticket is primarily targeted during Pass-the-Ticket attacks?",multiple_choice,"TGT (Ticket Granting Ticket)","active directory","very_hard","TGT,TGS,Service ticket,Access token"
+"True or False: In zero-trust networks, lateral movement should be impossible without continuous re-authentication.",true_false,"True","network architecture","very_hard",
+"Which technique is used to detect kernel-level rootkits by checking system call integrity?",multiple_choice,"Cross-view detection","malware analysis","very_hard","Hash comparison,Cross-view detection,Port scanning,Stack canaries"
+"True or False: ASLR is ineffective against information leakage exploits.",true_false,"True","exploit mitigation","very_hard",
+"Which attack extracts password hashes using replication privileges in AD?",multiple_choice,"DCSync attack","active directory","very_hard","Golden ticket,DCSync attack,Kerberoasting,Pass-the-Hash"
+"True or False: A web cache poisoning attack manipulates caches to serve malicious responses.",true_false,"True","web security","very_hard",
+"Which type of malware persists by modifying the system’s bootloader?",multiple_choice,"Bootkit","malware","very_hard","Adware,Spyware,Bootkit,Dropper"
+"True or False: TLS 1.3 removed support for RSA key exchange.",true_false,"True","cryptography","very_hard",
+"What technique allows attackers to break ASLR using sprayed memory patterns?",multiple_choice,"Heap spraying","exploit development","very_hard","Heap spraying,Key spraying,Cache poisoning,ROP chaining"
+"True or False: SMURF attacks rely on spoofed ARP packets.",true_false,"False","network attacks","very_hard",
+"Which protocol can be abused for reflected DDoS using large amplification factors?",multiple_choice,"NTP","network attacks","very_hard","SSH,NTP,SMTP,IMAP"
+"True or False: EDR systems can be bypassed using process hollowing techniques.",true_false,"True","endpoint security","very_hard",
+"Which type of vulnerability arises from TOCTOU issues?",multiple_choice,"Race condition","software security","very_hard","Buffer overflow,Race condition,Out-of-bounds read,Stack exhaustion"
+"True or False: IPv6 is immune to spoofing-based attacks.",true_false,"False","network security","very_hard",
+"What technique is commonly used to hide malicious code inside images?",multiple_choice,"Steganography","malware","very_hard","Steganography,Obfuscation,Polymerization,ROP injection"
+"True or False: MAC address randomization fully prevents device tracking.",true_false,"False","privacy","very_hard",
+"In cloud security, which attack targets insecure metadata APIs?",multiple_choice,"Instance credential theft","cloud","very_hard","Privilege pruning,Instance credential theft,Hypervisor injection,Container breakout"
+"True or False: Side-channel attacks can extract AES keys using power analysis.",true_false,"True","cryptography","very_hard",
+"What network attack abuses fragmentation to evade IDS systems?",multiple_choice,"Fragmentation overlap attack","network attacks","very_hard","ARP flood,Fragmentation overlap attack,MAC flooding,SSL stripping"
+"True or False: HTTP/2 is vulnerable to request smuggling if improperly configured.",true_false,"True","web security","very_hard",
+"Which technique uses chained small gadgets to bypass DEP?",multiple_choice,"Return-Oriented Programming","exploit development","very_hard","Shimming,ROP,Heap poisoning,Double-free"
+"True or False: Full disk encryption protects data even against cold boot attacks.",true_false,"False","forensics","very_hard",
+"Which protocol is vulnerable to KRACK attacks?",multiple_choice,"WPA2","wireless security","very_hard","WEP,WPA2,Bluetooth LE,Zigbee"
+"True or False: DLL sideloading abuses trusted applications to load malicious libraries.",true_false,"True","malware analysis","very_hard",
+"What technique allows malware to hide processes by falsifying API responses?",multiple_choice,"API hooking","malware","very_hard","Sandboxing,API hooking,Heap spraying,ROP chaining"
+"True or False: OAuth 2.0 implicit flow is vulnerable to token leakage.",true_false,"True","web security","very_hard",
+"In Active Directory, which attack forges authentication tickets using the KRBTGT hash?",multiple_choice,"Golden Ticket attack","active directory","very_hard","Silver ticket,Golden Ticket attack,DCSync,Skeleton key"
+"True or False: Container escapes can occur via misconfigured capabilities.",true_false,"True","cloud security","very_hard",
+"Which vulnerability class involves incorrect assumptions about user-controlled object states?",multiple_choice,"Insecure deserialization","software security","very_hard","SQL injection,XSS,Insecure deserialization,CSRF"
+"True or False: ECC cryptography is resistant to Shor’s algorithm.",true_false,"False","cryptography","very_hard",
+"Which attack injects malicious data into serialized objects to trigger code execution?",multiple_choice,"Deserialization attack","application security","very_hard","CSRF,Deserialization attack,Padding oracle,Clickjacking"
+"True or False: SYN cookies help defend against SYN flood attacks.",true_false,"True","network defense","very_hard",
+"Which protocol can attackers abuse using rogue RA messages?",multiple_choice,"IPv6","network security","very_hard","IPv4,IPv6,ARP,DHCP"
+"True or False: Firmware implants can survive OS reinstallation.",true_false,"True","firmware security","very_hard",
+"What technique do attackers use to capture NTLM challenge–response traffic?",multiple_choice,"Relay attack","active directory","very_hard","Kerberoasting,Relay attack,Password spraying,Ticket forging"
+"True or False: Secure Boot prevents execution of unsigned bootloaders.",true_false,"True","firmware security","very_hard",
+"Which malware technique delays execution until certain conditions are met?",multiple_choice,"Logic bombs","malware","very_hard","Worms,Trojans,Logic bombs,RATs"
+"True or False: TLS compression vulnerabilities enabled the CRIME attack.",true_false,"True","cryptography","very_hard",
+"What attack manipulates CPU speculative execution to leak memory?",multiple_choice,"Spectre","hardware security","very_hard","XDoS,Spectre,Rowhammer,Meltdown"
+"True or False: CSRF tokens must be unpredictable and tied to a session.",true_false,"True","web security","very_hard",
+"What attack abuses bit-flipping in DRAM to corrupt memory?",multiple_choice,"Rowhammer","hardware security","very_hard","Rowhammer,Meltdown,Spectre,Cache timing"
+"True or False: NAT prevents all forms of inbound attacks.",true_false,"False","network security","very_hard",
+"Which protocol field can be manipulated to poison routing tables?",multiple_choice,"BGP attributes","network routing","very_hard","TCP window,BGP attributes,DNS flags,ARP opcode"
+"True or False: SSTI attacks allow execution of server-side template expressions.",true_false,"True","web security","very_hard",
+"What attack targets weak JWT signing methods like 'none'?",multiple_choice,"JWT algorithm confusion","authentication","very_hard","Replay attack,JWT algorithm confusion,Side-channel leak,Key stretching failure"
+"True or False: IPSec ESP provides both encryption and integrity protection.",true_false,"True","network security","very_hard",
+"What technique hides malicious code inside legitimate signed drivers?",multiple_choice,"BYOVD (Bring Your Own Vulnerable Driver)","malware","very_hard","Rootkit,BYOVD,Polyglot payload,Dynamic unpacking"
+"True or False: In LDAP injection, attackers manipulate directory queries.",true_false,"True","directory services","very_hard",
+"What vulnerability arises when padding is incorrectly validated?",multiple_choice,"Padding oracle","cryptography","very_hard","Heartbleed,Padding oracle,Key reuse,Nonce reuse"
+"True or False: ARP spoofing can be used to perform MITM attacks.",true_false,"True","network attacks","very_hard",
+"What exploit targets branch prediction units to leak memory?",multiple_choice,"Spectre Variant 2","hardware security","very_hard","Meltdown,Spectre V2,Rowhammer,ZombieLoad"
+"True or False: SAML authentication can be compromised by XML signature wrapping.",true_false,"True","identity security","very_hard",
+"What attack forces clients to downgrade to weaker encryption?",multiple_choice,"SSL stripping","web security","very_hard","Clickjacking,SSL stripping,DNS rebinding,HTTP smuggling"
+"True or False: WPA3 eliminates all offline dictionary attacks.",true_false,"False","wireless security","very_hard",
+"What vulnerability type is exploited in XXE attacks?",multiple_choice,"External entity processing","web security","very_hard","Cross-site scripting,External entity processing,Command injection,Weak hashing"
+"True or False: DNS rebinding allows attackers to bypass same-origin restrictions.",true_false,"True","web security","very_hard",
+"What technique bypasses antivirus by encrypting malware payloads?",multiple_choice,"Crypters","malware","very_hard","Beacons,Crypters,Packers,Wipers"
+"True or False: Memory forensics can detect hidden processes using kernel structure reconstruction.",true_false,"True","forensics","very_hard",
+"In container security, which issue allows overwriting host filesystem paths?",multiple_choice,"Path traversal via volume mounts","cloud security","very_hard","Privilege pruning,Path traversal via volume mounts,Capability spoofing,Image squashing"
+"True or False: ROP attacks rely on non-executable stack restrictions.",true_false,"True","exploit development","very_hard",
+"What attack targets CPU cache timings to infer secret values?",multiple_choice,"Cache timing attack","side-channel","very_hard","Bit-flip attack,Cache timing attack,Cold boot,Rowhammer"
+"True or False: SSRF can be used to access cloud metadata endpoints.",true_false,"True","cloud security","very_hard",
+"What attack abuses packet reassembly differences in IDS vs host?",multiple_choice,"Evasion via overlapping fragments","network security","very_hard","Smurf attack,Evasion via overlapping fragments,ARP spoofing,IP spoofing"
+"True or False: A Silver Ticket attack forges TGS tickets using service account hashes.",true_false,"True","active directory","very_hard",
+"What type of vulnerability is exploited by timing discrepancies in authentication?",multiple_choice,"Timing attack","cryptography","very_hard","Integer underflow,Timing attack,Buffer overflow,Format string bug"
+"True or False: OAuth refresh tokens must be stored securely due to long lifetimes.",true_false,"True","authentication","very_hard",
+"What attack injects malicious code between reverse proxies?",multiple_choice,"HTTP request smuggling","web security","very_hard","Replay attack,HTTP request smuggling,Session fixation,Header injection"
+"True or False: Malware packers compress or encrypt payloads to evade detection.",true_false,"True","malware","very_hard",
+"What attack exhausts heap memory via many small allocations?",multiple_choice,"Heap exhaustion attack","denial of service","very_hard","SYN flood,Heap exhaustion attack,ICMP flood,Slowloris"
+"True or False: IP cameras are often vulnerable due to hardcoded credentials.",true_false,"True","IoT security","very_hard",
+"What exploit causes processors to leak memory via transient execution?",multiple_choice,"Meltdown","hardware security","very_hard","Rowhammer,Meltdown,Spectre,ZombieLoad"
+"True or False: Token binding helps prevent session hijacking.",true_false,"True","web security","very_hard",
+"What DDoS method leverages SSDP for amplification?",multiple_choice,"UPnP reflection","network attacks","very_hard","Ping flood,UPnP reflection,ACK storm,SOCKS tunneling"
+"True or False: LDAP signing prevents MITM tampering.",true_false,"True","directory services","very_hard",
+"What privilege escalation technique abuses writable service binaries?",multiple_choice,"Service hijacking","windows security","very_hard","Kerberoasting,Service hijacking,Token duplication,Process injection"
+"True or False: Server-side request forgery can bypass firewalls.",true_false,"True","web security","very_hard",
+"What vulnerability arises from incorrect key reuse in encryption?",multiple_choice,"Nonce reuse attack","cryptography","very_hard","Padding oracle,Nonce reuse attack,Clickjacking,Replay attack"
+"True or False: IPv6 extension headers can be abused for IDS evasion.",true_false,"True","network security","very_hard",
+"What technique hides malware by executing only in memory?",multiple_choice,"Fileless malware","malware","very_hard","Bootkits,Fileless malware,Rootkits,Downloaders"
+"True or False: Kerberos Pre-Auth prevents offline password brute-forcing.",true_false,"True","active directory","very_hard",
+"What attack manipulates proxies to bypass authentication controls?",multiple_choice,"Proxy bypass attack","web security","very_hard","Proxy bypass attack,Header injection,CSRF,Session fixation"
+"True or False: USB HID spoofing can simulate keystrokes to execute malicious payloads.",true_false,"True","hardware attacks","very_hard",
+"What technique decrypts TLS traffic by capturing session keys from memory?",multiple_choice,"SSL key extraction","forensics","very_hard","Hashdump,SSL key extraction,Heap dump,Shadow copy"
+"True or False: DNS tunneling can be used for data exfiltration.",true_false,"True","network attacks","very_hard",
+"What type of exploit abuses insecure memory freeing operations?",multiple_choice,"Use-after-free","exploit development","very_hard","Use-after-free,Double free,Buffer overflow,Stack smash"
+"True or False: SNI sniffing can reveal the hostname even over encrypted TLS connections.",true_false,"True","network security","very_hard",
+"What technique hides C2 communication within normal HTTPS traffic?",multiple_choice,"Domain fronting","malware C2","very_hard","DNSSEC,Domain fronting,ARP proxying,Tor hidden service"
+"True or False: Recursive DNS resolvers can be abused for DDoS amplification.",true_false,"True","network attacks","very_hard"

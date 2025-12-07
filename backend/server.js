@@ -17,6 +17,7 @@ app.use('/api/questions', require('./routes/questions'));
 app.use('/api/quiz', require('./routes/quiz'));
 app.use('/api/leaderboard', require('./routes/leaderboard'));
 app.use('/api/stats', require('./routes/stats'));
+app.use('/api/levels', require('./routes/levels'));
 app.use('/api/admin', require('./routes/admin'));
 
 // Health check

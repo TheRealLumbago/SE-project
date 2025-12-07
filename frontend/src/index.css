@@ -159,6 +159,31 @@ code {
   color: #f0f0f0 !important;
 }
 
+/* Level Card Styles */
+.level-card {
+  transition: all 0.3s ease;
+  height: 100%;
+}
+
+.level-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+}
+
+.level-card.level-locked {
+  opacity: 0.6;
+  filter: grayscale(0.5);
+}
+
+.level-card.level-current {
+  border: 2px solid #667eea;
+  box-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
+}
+
+.level-card.level-current:hover {
+  box-shadow: 0 0 30px rgba(102, 126, 234, 0.7);
+}
+
 .form-control, .form-select {
   background-color: #1a1a2e !important;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
@@ -552,4 +577,64 @@ strong, b {
 
 .badge.bg-secondary {
   background-color: rgba(108, 117, 125, 0.8) !important;
+}
+
+/* Dashboard stat cards */
+.dashboard-stat-card {
+  transition: all 0.3s ease;
+}
+
+.dashboard-stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+}
+
+.badge-display {
+  background: rgba(102, 126, 234, 0.1);
+  border-radius: 12px;
+  border: 1px solid rgba(102, 126, 234, 0.2);
+  transition: all 0.3s ease;
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  height: 100%;
+}
+
+.badge-display:hover {
+  background: rgba(102, 126, 234, 0.2);
+  transform: scale(1.05);
+}
+
+/* Puzzle display area */
+.puzzle-display-area {
+  position: relative;
+}
+
+/* Responsive design improvements */
+@media (max-width: 768px) {
+  .main-content {
+    padding: 1rem;
+    margin: 1rem;
+  }
+  
+  .card {
+    margin-bottom: 1rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  .puzzle-display-area {
+    padding: 1rem !important;
+  }
+  
+  .toast-container {
+    right: 10px;
+    left: 10px;
+    max-width: none;
+  }
 }

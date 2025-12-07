@@ -45,10 +45,13 @@ function Navbar() {
                   <Link className="nav-link" to="/dashboard">Dashboard</Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/quiz">Take Quiz</Link>
+                  <Link className="nav-link" to="/levels">Levels</Link>
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="/leaderboard">Leaderboard</Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/profile">Profile</Link>
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="/upload">Upload Questions</Link>

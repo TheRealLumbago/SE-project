@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
+import { useToast } from '../components/Toast';
 
 function Quiz() {
   const [question, setQuestion] = useState(null);
@@ -15,15 +16,20 @@ function Quiz() {
   const [startTime, setStartTime] = useState(null);
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
-  const { refreshUser } = useAuth();
+  const { refreshUser, user } = useAuth();
+  const { success, error, warning } = useToast();
+  const [questionNumber, setQuestionNumber] = useState(1);
 
   useEffect(() => {
+    setQuestionNumber(1); // Reset question number when params change
     fetchQuestion();
   }, [searchParams]);
 
   useEffect(() => {
     if (question && question.time_limit && !result) {
-      setTimeLeft(question.time_limit);
+      // Cap timer at 30 seconds maximum
+      const timeLimit = Math.min(question.time_limit || 30, 30);
+      setTimeLeft(timeLimit);
       setStartTime(Date.now());
       setHintsUsed(0);
       setHint(null);
@@ -78,6 +84,7 @@ function Quiz() {
           return;
         }
         setQuestion(response.data.question);
+      setQuestionNumber(prev => prev + 1);
       } else {
         throw new Error('No question received');
       }
@@ -120,6 +127,16 @@ function Quiz() {
 
       setResult(response.data);
       
+      // Show feedback messages
+      if (response.data.is_correct) {
+        success(`Correct! You earned ${response.data.xp_earned} XP!`);
+        if (response.data.level_up) {
+          success(`🎉 Level Up! You've reached Level ${response.data.current_level}!`, 5000);
+        }
+      } else {
+        error(`Incorrect! The correct answer was: ${response.data.correct_answer}`);
+      }
+      
       // Refresh user data to update XP in navbar
       if (response.data.total_xp !== undefined) {
         await refreshUser();
@@ -134,7 +151,7 @@ function Quiz() {
 
   const handleTimeUp = async () => {
     if (!answer && question) {
-      alert('Time is up! Submitting empty answer...');
+      warning('Time is up! Submitting empty answer...');
       await handleSubmit(null, true);
     }
   };
@@ -146,8 +163,9 @@ function Quiz() {
       const response = await axios.get(`/api/quiz/hint/${question.id}`);
       setHint(response.data.hint);
       setHintsUsed(prev => prev + 1);
-    } catch (error) {
-      alert(error.response?.data?.error || 'Failed to get hint');
+      warning('Hint used! -2 XP will be deducted from your score.', 3000);
+    } catch (err) {
+      error(err.response?.data?.error || 'Failed to get hint');
     }
   };
 
@@ -283,14 +301,28 @@ function Quiz() {
   return (
     <div className="container">
       <div className="main-content">
-        <h2 className="mb-4"><i className="bi bi-question-circle"></i> CyberEscapeRoom</h2>
+        <div className="d-flex justify-content-between align-items-center mb-4">
+          <h2 className="mb-0"><i className="bi bi-question-circle"></i> CyberEscapeRoom</h2>
+          <div className="d-flex align-items-center gap-3">
+            <div className="text-end">
+              <div className="text-muted small">Question</div>
+              <div className="fw-bold">#{questionNumber}</div>
+            </div>
+            {user && (
+              <div className="text-end">
+                <div className="text-muted small">Your Level</div>
+                <div className="fw-bold">Level {user.current_level || 1}</div>
+              </div>
+            )}
+          </div>
+        </div>
         
         <div className="card mb-3">
           <div className="card-header">
             <div className="row align-items-center">
               <div className="col-md-6">
-                <span className="badge bg-info">{question.category}</span>
-                <span className={`badge bg-${question.difficulty === 'easy' ? 'success' : question.difficulty === 'medium' ? 'warning' : 'danger'}`}>
+                <span className="badge bg-info me-2">{question.category}</span>
+                <span className={`badge bg-${question.difficulty === 'easy' ? 'success' : question.difficulty === 'medium' ? 'warning' : 'danger'} me-2`}>
                   {question.difficulty}
                 </span>
                 {question.level_required > 1 && (
@@ -299,18 +331,25 @@ function Quiz() {
               </div>
               <div className="col-md-6 text-end">
                 {timeLeft !== null && (
-                  <span className={`badge ${timeLeft <= 30 ? 'bg-danger' : timeLeft <= 60 ? 'bg-warning' : 'bg-info'} me-2`}>
+                  <span className={`badge ${timeLeft <= 30 ? 'bg-danger' : timeLeft <= 60 ? 'bg-warning' : 'bg-info'} me-2`} style={{ fontSize: '1rem', padding: '0.5rem 1rem' }}>
                     <i className="bi bi-clock"></i> {Math.floor(timeLeft / 60)}:{(timeLeft % 60).toString().padStart(2, '0')}
                   </span>
                 )}
-                <span className="badge bg-primary">
+                <span className="badge bg-primary" style={{ fontSize: '1rem', padding: '0.5rem 1rem' }}>
                   {question.difficulty === 'easy' ? '10' : question.difficulty === 'medium' ? '20' : '30'} XP
                 </span>
               </div>
             </div>
           </div>
           <div className="card-body">
-            <h5 className="card-title mb-4">{question.question_text}</h5>
+            <div className="puzzle-display-area mb-4 p-4" style={{ 
+              background: 'rgba(102, 126, 234, 0.1)', 
+              borderRadius: '12px',
+              border: '1px solid rgba(102, 126, 234, 0.3)',
+              minHeight: '100px'
+            }}>
+              <h5 className="card-title mb-0">{question.question_text}</h5>
+            </div>
             
             {hint && (
               <div className="alert alert-info mb-3">
