@@ -65,12 +65,6 @@ function Quiz() {
       // Only use difficulty if not starting a specific level
       const difficulty = level ? null : (searchParams.get('difficulty') || 'medium');
       const category = searchParams.get('category');
-      const useOpenai = searchParams.get('use_openai') === 'true';
-
-      if (useOpenai) {
-        // Generate AI question
-        await axios.post('/api/questions/generate', { difficulty: difficulty || 'medium', topic: category });
-      }
 
       // Build params object, only include difficulty if not null
       const params = { category, level };
@@ -435,9 +429,6 @@ function Quiz() {
         <div className="text-center">
           <button onClick={fetchQuestion} className="btn btn-outline-secondary me-2">
             <i className="bi bi-arrow-clockwise"></i> Get New Question
-          </button>
-          <button onClick={() => navigate('/quiz?use_openai=true')} className="btn btn-outline-primary">
-            <i className="bi bi-magic"></i> Generate with AI
           </button>
         </div>
       </div>

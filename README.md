@@ -47,7 +47,7 @@ The Cyber Escape Room platform provides:
 - ✅ **Hint System** (FR-04): Hints available with score deduction (2 XP per hint)
 - ✅ **Leaderboard System** (FR-05): Ranking board showing top users by XP
 - ✅ **Daily Streak & Rewards** (FR-06): Tracks daily streaks and rewards consistent participation
-- ✅ **Level Progression** (FR-07): Unlocks higher levels after completing previous ones (5 levels: Beginner, Novice, Intermediate, Advanced, Expert)
+- ✅ **Level Progression** (FR-07): Unlocks higher levels after completing previous ones (7 levels: Beginner, Novice, Intermediate, Advanced, Expert, Master, Grandmaster)
 - ✅ **Admin Puzzle Management** (FR-08): Admin panel for adding, editing, and deleting puzzles
 - ✅ **Performance Analytics Dashboard** (FR-09): Comprehensive tracking of user performance, accuracy, and progress
 
@@ -56,9 +56,13 @@ The Cyber Escape Room platform provides:
 - **AI-Generated Questions**: Generate questions dynamically using OpenAI API
 - **CSV Question Upload**: Bulk upload questions via CSV files
 - **Multiple Question Types**: Multiple choice and true/false questions
-- **XP System**: Earn XP based on difficulty (Easy: 10, Medium: 20, Hard: 30)
+- **XP System**: Earn XP based on difficulty and level (scales with level progression)
+  - Base XP: Easy (10), Medium (20), Hard (30), Very Hard (50)
+  - XP scales with level to ensure ~10 questions unlock the next level
+- **Level-Based Questions**: Questions organized by `level_required` to match user progression
 - **Real-time Feedback**: Immediate feedback on answers with explanations
 - **Responsive Design**: Cross-device compatibility for desktop and mobile browsers
+- **Admin Privileges**: Admins have all levels unlocked, 10000 XP, and level 7 access
 
 ## Project Structure
 
@@ -145,8 +149,14 @@ The React app will run on `http://localhost:3000`
 ### Creating Admin Account
 
 To create an admin account, you can either:
-1. Manually update the database: `UPDATE user SET role = 'admin' WHERE username = 'your_username';`
-2. Use the admin API endpoint (if you have admin access)
+1. Manually update the database: `UPDATE user SET role = 'admin', total_xp = 10000, current_level = 7 WHERE username = 'your_username';`
+2. Use the admin API endpoint (if you have admin access): `PUT /api/admin/users/:id/role` with `{"role": "admin"}`
+
+**Note:** Admin accounts automatically receive:
+- 10000 XP
+- Level 7 (Grandmaster) access
+- All levels unlocked regardless of XP
+- Access to all questions from any level
 
 ## Functional Requirements
 
@@ -156,9 +166,10 @@ To create an admin account, you can either:
 - Password hashing with bcrypt
 
 ### FR-02: Cybersecurity Puzzle Engine
-- Presents cybersecurity puzzles (phishing detection, cipher decoding, OSINT tasks)
+- Presents cybersecurity puzzles (phishing detection, cipher decoding, OSINT tasks, network logs analysis)
 - Supports multiple question types: multiple choice and true/false
-- Questions organized by category and difficulty
+- Questions organized by category, difficulty, and level requirement
+- Questions assigned to specific levels to ensure progressive difficulty
 
 ### FR-03: Timer & Scoring System
 - Countdown timer for each question (default 5 minutes)
@@ -183,22 +194,30 @@ To create an admin account, you can either:
 
 ### FR-07: Level Progression
 - 7 levels with increasing XP requirements:
-  - Level 1: Beginner (0 XP)
-  - Level 2: Novice (100 XP)
-  - Level 3: Intermediate (250 XP)
-  - Level 4: Advanced (500 XP)
-  - Level 5: Expert (1000 XP)
-  - Level 6: Master (2000 XP)
-  - Level 7: Grandmaster (3500 XP)
-- Questions can require minimum level
+  - Level 1: Beginner (0 XP) - Start your cybersecurity journey
+  - Level 2: Novice (100 XP) - You are learning the basics
+  - Level 3: Intermediate (250 XP) - Building your skills
+  - Level 4: Advanced (500 XP) - Mastering cybersecurity
+  - Level 5: Expert (1000 XP) - Cybersecurity professional
+  - Level 6: Master (2000 XP) - Advanced cybersecurity expert
+  - Level 7: Grandmaster (3500 XP) - Elite cybersecurity specialist
+- Questions assigned to specific levels via `level_required` field
+- XP system designed so that approximately 10 questions unlock the next level
+- XP scales with level: higher levels award more XP per question
 - Automatic level unlocking based on total XP
 - Progress bar shows XP needed for next level
+- Admin users automatically have all levels unlocked, 10000 XP, and level 7 access
 
 ### FR-08: Admin Puzzle Management
 - Admin role required
 - Add, edit, and delete puzzles
-- Manage user roles
+- Manage user roles (assign admin, instructor, or learner roles)
 - View all users and questions
+- Admin privileges:
+  - All levels automatically unlocked
+  - 10000 XP and level 7 access
+  - Can access any level without XP requirements
+  - Can answer questions from any level
 
 ### FR-09: Performance Analytics Dashboard
 - Tracks user accuracy, completion time, hints used
@@ -269,7 +288,11 @@ To create an admin account, you can either:
 
 ### Quiz
 - `GET /api/quiz` - Get random question (protected)
+  - Query params: `difficulty`, `category`, `level`
+  - Returns questions matching user's current level or specified level
 - `POST /api/quiz/submit` - Submit answer (protected)
+  - Awards XP based on difficulty and question level
+  - Deducts 2 XP per hint used
 - `GET /api/quiz/hint/:questionId` - Get hint for question (protected)
 
 ### Leaderboard
@@ -284,6 +307,7 @@ To create an admin account, you can either:
 - `DELETE /api/admin/questions/:id` - Delete question (admin only)
 - `GET /api/admin/users` - Get all users (admin only)
 - `PUT /api/admin/users/:id/role` - Update user role (admin only)
+  - Setting role to 'admin' automatically grants 10000 XP and level 7
 
 ## Technologies Used
 
@@ -339,6 +363,8 @@ The built files will be in `frontend/build/`. You can serve them with a static f
 
 **Question Table:**
 - id, question_text, question_type, options, correct_answer, category, difficulty, hint, level_required, time_limit, created_by, created_at
+- `level_required`: Integer indicating which level the question belongs to (1-7)
+- Questions are filtered by `level_required` to match user progression
 
 **User Progress Table:**
 - id, user_id, question_id, answered_correctly, xp_earned, time_taken, hints_used, answered_at
@@ -352,9 +378,14 @@ The built files will be in `frontend/build/`. You can serve them with a static f
 - JWT tokens expire after 24 hours
 - The frontend proxy is configured to forward API requests to the backend
 - Make sure to set your OpenAI API key in the backend `.env` file for AI question generation
-- Default admin role can be set manually in the database
+- Admin role can be set manually in the database or via admin API endpoint
 - Timer defaults to 5 minutes (300 seconds) per question
 - Hint penalty: 2 XP deducted per hint used
+- XP System: Designed so that approximately 10 questions unlock the next level
+  - XP scales with level (Level 1: 10 XP, Level 2: 15 XP, Level 3: 25 XP, etc.)
+  - Higher levels award more XP per question to maintain progression balance
+- Questions are organized by `level_required` to ensure users progress through appropriate difficulty levels
+- Admin users bypass all level restrictions and have full system access
 
 ## License
 
