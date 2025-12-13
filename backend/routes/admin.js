@@ -89,7 +89,16 @@ router.put('/users/:id/role', authenticateToken, requireAdmin, async (req, res) 
       return res.status(400).json({ error: 'You cannot remove your own admin role' });
     }
     
-    await db.runAsync('UPDATE user SET role = ? WHERE id = ?', [role, req.params.id]);
+    // If setting role to admin, set XP to 10000 and current_level to 7
+    if (role === 'admin') {
+      await db.runAsync(
+        'UPDATE user SET role = ?, total_xp = 10000, current_level = 7 WHERE id = ?',
+        [role, req.params.id]
+      );
+    } else {
+      await db.runAsync('UPDATE user SET role = ? WHERE id = ?', [role, req.params.id]);
+    }
+    
     res.json({ message: 'User role updated successfully' });
   } catch (error) {
     console.error('Update user role error:', error);
@@ -144,6 +153,25 @@ router.get('/users/:id', authenticateToken, requireAdmin, async (req, res) => {
     res.json({ user, stats: progress[0] || { total_answered: 0, correct_count: 0 } });
   } catch (error) {
     console.error('Get user details error:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// Clear all questions (admin) - use with caution
+router.delete('/questions/clear', authenticateToken, requireAdmin, async (req, res) => {
+  try {
+    // Delete all user progress first (foreign key constraint)
+    await db.runAsync('DELETE FROM user_progress');
+    
+    // Delete all questions
+    const result = await db.runAsync('DELETE FROM question');
+    
+    res.json({ 
+      message: 'All questions cleared successfully',
+      deleted: result.changes 
+    });
+  } catch (error) {
+    console.error('Clear questions error:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 });

@@ -61,18 +61,24 @@ function Quiz() {
   const fetchQuestion = async () => {
     setLoading(true);
     try {
-      const difficulty = searchParams.get('difficulty') || 'medium';
+      const level = searchParams.get('level');
+      // Only use difficulty if not starting a specific level
+      const difficulty = level ? null : (searchParams.get('difficulty') || 'medium');
       const category = searchParams.get('category');
       const useOpenai = searchParams.get('use_openai') === 'true';
 
       if (useOpenai) {
         // Generate AI question
-        await axios.post('/api/questions/generate', { difficulty, topic: category });
+        await axios.post('/api/questions/generate', { difficulty: difficulty || 'medium', topic: category });
       }
 
-      const response = await axios.get('/api/quiz', {
-        params: { difficulty, category }
-      });
+      // Build params object, only include difficulty if not null
+      const params = { category, level };
+      if (difficulty) {
+        params.difficulty = difficulty;
+      }
+
+      const response = await axios.get('/api/quiz', { params });
       
       // Double check question type - reject short_answer or any unsupported types
       if (response.data.question) {

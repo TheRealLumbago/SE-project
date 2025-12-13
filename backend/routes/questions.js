@@ -10,7 +10,27 @@ const { generateCybersecurityQuestion } = require('../services/openaiService');
 
 const upload = multer({ dest: 'uploads/' });
 
-const XP_VALUES = { easy: 10, medium: 20, hard: 30 };
+const XP_VALUES = { easy: 10, medium: 20, hard: 30, very_hard: 50 };
+
+// Calculate XP based on difficulty and level
+// Designed so that 10 questions = 1 level up
+function calculateXP(difficulty, level) {
+  const baseXP = XP_VALUES[difficulty] || 10;
+  
+  // Level multipliers to ensure ~10 questions per level
+  const levelMultipliers = {
+    1: 1.0,   // 10 XP (easy)
+    2: 1.5,   // 15 XP (easy)
+    3: 1.25,  // 25 XP (medium)
+    4: 2.5,   // 50 XP (medium)
+    5: 3.33,  // 100 XP (hard)
+    6: 3.0,   // 150 XP (very_hard)
+    7: 3.0    // 150 XP (very_hard) - same as level 6
+  };
+  
+  const multiplier = levelMultipliers[level] || 1.0;
+  return Math.round(baseXP * multiplier);
+}
 
 // Create question
 router.post('/', authenticateToken, async (req, res) => {
@@ -118,20 +138,48 @@ router.post('/upload-csv', authenticateToken, upload.single('file'), async (req,
         }
 
         const options = row.options ? row.options.split(',').map(opt => opt.trim()) : null;
+        const level_required = row.level_required ? parseInt(row.level_required) : 1;
 
-        await db.runAsync(
-          `INSERT INTO question (question_text, question_type, options, correct_answer, category, difficulty, created_by)
-           VALUES (?, ?, ?, ?, ?, ?, ?)`,
-          [
-            row.question_text,
-            row.question_type,
-            options ? JSON.stringify(options) : null,
-            row.correct_answer,
-            row.category,
-            row.difficulty,
-            req.user.id
-          ]
+        // Check if question already exists (by question text)
+        const existing = await db.getAsync(
+          'SELECT id FROM question WHERE question_text = ?',
+          [row.question_text]
         );
+
+        if (existing) {
+          // Update existing question
+          await db.runAsync(
+            `UPDATE question 
+             SET question_type = ?, options = ?, correct_answer = ?, category = ?, 
+                 difficulty = ?, level_required = ?
+             WHERE id = ?`,
+            [
+              row.question_type,
+              options ? JSON.stringify(options) : null,
+              row.correct_answer,
+              row.category,
+              row.difficulty,
+              level_required,
+              existing.id
+            ]
+          );
+        } else {
+          // Insert new question
+          await db.runAsync(
+            `INSERT INTO question (question_text, question_type, options, correct_answer, category, difficulty, level_required, created_by)
+             VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+            [
+              row.question_text,
+              row.question_type,
+              options ? JSON.stringify(options) : null,
+              row.correct_answer,
+              row.category,
+              row.difficulty,
+              level_required,
+              req.user.id
+            ]
+          );
+        }
         created++;
       } catch (error) {
         errors.push(`Row ${i + 2}: ${error.message}`);

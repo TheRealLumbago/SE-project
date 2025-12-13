@@ -3,13 +3,88 @@ const router = express.Router();
 const db = require('../config/database');
 const { authenticateToken } = require('../middleware/auth');
 
-const XP_VALUES = { easy: 10, medium: 20, hard: 30 };
+const XP_VALUES = { easy: 10, medium: 20, hard: 30, very_hard: 50 };
+
+// Calculate XP based on difficulty and level
+// Designed so that 10 questions = 1 level up
+function calculateXP(difficulty, level) {
+  const baseXP = XP_VALUES[difficulty] || 10;
+  
+  // Level multipliers to ensure ~10 questions per level
+  // Level 1: 10 XP (easy) → 100 XP total (10 questions)
+  // Level 2: 15 XP (easy) → 150 XP total (10 questions)
+  // Level 3: 25 XP (medium) → 250 XP total (10 questions)
+  // Level 4: 50 XP (medium) → 500 XP total (10 questions)
+  // Level 5: 100 XP (hard) → 1000 XP total (10 questions)
+  // Level 6: 150 XP (very_hard) → 1500 XP total (10 questions)
+  
+  const levelMultipliers = {
+    1: 1.0,   // 10 XP (easy)
+    2: 1.5,   // 15 XP (easy)
+    3: 1.25,  // 25 XP (medium)
+    4: 2.5,   // 50 XP (medium)
+    5: 3.33,  // 100 XP (hard)
+    6: 3.0,   // 150 XP (very_hard)
+    7: 3.0    // 150 XP (very_hard) - same as level 6
+  };
+  
+  // Ensure level is a number and handle string conversion
+  let levelNum = level;
+  if (typeof level === 'string') {
+    levelNum = parseInt(level, 10);
+  }
+  if (isNaN(levelNum) || levelNum < 1) {
+    levelNum = 1;
+  }
+  
+  const multiplier = levelMultipliers[levelNum] || levelMultipliers[1];
+  const result = Math.round(baseXP * multiplier);
+  
+  return result;
+}
 
 // Get question for quiz
 router.get('/', authenticateToken, async (req, res) => {
   try {
-    const { difficulty, category } = req.query;
+    const { difficulty, category, level } = req.query;
     const userId = req.user.id;
+
+    // Get user's current level, XP, and role
+    const user = await db.getAsync('SELECT current_level, total_xp, role FROM user WHERE id = ?', [userId]);
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+    const userLevel = user.current_level || 1;
+    const isAdmin = user.role === 'admin';
+    
+    // Determine which level to use - if level param is provided, use it; otherwise use user's current level
+    let targetLevel = userLevel;
+    if (level) {
+      const requestedLevel = parseInt(level);
+      if (isNaN(requestedLevel) || requestedLevel < 1) {
+        return res.status(400).json({ error: 'Invalid level parameter' });
+      }
+      
+      // Check if user has unlocked this level (admins bypass this check)
+      if (!isAdmin) {
+        const levelInfo = await db.getAsync(
+          'SELECT xp_required FROM level WHERE level_number = ?',
+          [requestedLevel]
+        );
+        
+        if (!levelInfo) {
+          return res.status(404).json({ error: 'Level not found' });
+        }
+        
+        if (user.total_xp < levelInfo.xp_required) {
+          return res.status(403).json({ 
+            error: `Level ${requestedLevel} is locked. You need ${levelInfo.xp_required} XP to unlock it.` 
+          });
+        }
+      }
+      
+      targetLevel = requestedLevel;
+    }
 
     // Get list of question IDs user has already answered
     const answeredQuestions = await db.allAsync(
@@ -18,9 +93,20 @@ router.get('/', authenticateToken, async (req, res) => {
     );
     const answeredIds = answeredQuestions.map(q => q.question_id).filter(id => id != null);
 
-    // Only fetch multiple_choice and true_false questions that user hasn't answered
+    // Only fetch multiple_choice and true_false questions for the target level
+    // If level param is provided, filter by that specific level; otherwise use <= userLevel
     let query = 'SELECT * FROM question WHERE question_type IN (?, ?)';
     const params = ['multiple_choice', 'true_false'];
+    
+    if (level) {
+      // If specific level requested, show only questions for that level
+      query += ' AND level_required = ?';
+      params.push(targetLevel);
+    } else {
+      // Otherwise, show questions up to user's current level
+      query += ' AND level_required <= ?';
+      params.push(targetLevel);
+    }
 
     // Exclude already answered questions if there are any
     if (answeredIds.length > 0) {
@@ -29,7 +115,9 @@ router.get('/', authenticateToken, async (req, res) => {
       params.push(...answeredIds);
     }
 
-    if (difficulty) {
+    // Only apply difficulty filter if not starting a specific level
+    // When starting a level, show all difficulties for that level
+    if (difficulty && !level) {
       query += ' AND difficulty = ?';
       params.push(difficulty);
     }
@@ -43,11 +131,20 @@ router.get('/', authenticateToken, async (req, res) => {
 
     // If no unanswered questions, allow repeats but prefer unanswered
     if (questions.length === 0) {
-      // Fallback: get all questions (allow repeats)
+      // Fallback: get all questions (allow repeats) but still filter by level
       let fallbackQuery = 'SELECT * FROM question WHERE question_type IN (?, ?)';
       const fallbackParams = ['multiple_choice', 'true_false'];
+      
+      if (level) {
+        fallbackQuery += ' AND level_required = ?';
+        fallbackParams.push(targetLevel);
+      } else {
+        fallbackQuery += ' AND level_required <= ?';
+        fallbackParams.push(targetLevel);
+      }
 
-      if (difficulty) {
+      // Only apply difficulty filter if not starting a specific level
+      if (difficulty && !level) {
         fallbackQuery += ' AND difficulty = ?';
         fallbackParams.push(difficulty);
       }
@@ -60,7 +157,7 @@ router.get('/', authenticateToken, async (req, res) => {
       const allQuestions = await db.allAsync(fallbackQuery, fallbackParams);
       
       if (allQuestions.length === 0) {
-        return res.status(404).json({ error: 'No questions available' });
+        return res.status(404).json({ error: `No questions available for level ${targetLevel}` });
       }
 
       // Randomly select from all questions
@@ -145,9 +242,10 @@ router.post('/submit', authenticateToken, async (req, res) => {
       return res.status(404).json({ error: 'Question not found or unsupported question type' });
     }
 
-    // Check user level
-    const user = await db.getAsync('SELECT current_level FROM user WHERE id = ?', [req.user.id]);
-    if (user.current_level < (question.level_required || 1)) {
+    // Check user level (admins bypass this check)
+    const user = await db.getAsync('SELECT current_level, role FROM user WHERE id = ?', [req.user.id]);
+    const isAdmin = user.role === 'admin';
+    if (!isAdmin && user.current_level < (question.level_required || 1)) {
       return res.status(403).json({ error: 'You need to reach level ' + (question.level_required || 1) + ' to access this question' });
     }
 
@@ -166,9 +264,14 @@ router.post('/submit', authenticateToken, async (req, res) => {
     // Calculate XP (deduct for hints used)
     let xpEarned = 0;
     if (isCorrect) {
-      const baseXP = XP_VALUES[question.difficulty] || 10;
+      // Ensure level is a number (database might return it as string)
+      const level = parseInt(question.level_required) || 1;
+      const baseXP = calculateXP(question.difficulty, level);
       const hintPenalty = (hints_used || 0) * 2; // Deduct 2 XP per hint
       xpEarned = Math.max(0, baseXP - hintPenalty);
+      
+      // Debug: Log XP calculation
+      console.log(`[XP] Q${question_id}: diff=${question.difficulty}, lvl=${level}, base=${baseXP}, penalty=${hintPenalty}, final=${xpEarned}`);
     }
 
     // Update user XP if correct

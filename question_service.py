@@ -8,8 +8,28 @@ from openai_service import generate_cybersecurity_question
 XP_VALUES = {
     'easy': 10,
     'medium': 20,
-    'hard': 30
+    'hard': 30,
+    'very_hard': 50
 }
+
+def calculate_xp(difficulty, level=1):
+    """Calculate XP based on difficulty and level
+    Designed so that 10 questions = 1 level up"""
+    base_xp = XP_VALUES.get(difficulty, 10)
+    
+    # Level multipliers to ensure ~10 questions per level
+    level_multipliers = {
+        1: 1.0,   # 10 XP (easy)
+        2: 1.5,   # 15 XP (easy)
+        3: 1.25,  # 25 XP (medium)
+        4: 2.5,   # 50 XP (medium)
+        5: 3.33,  # 100 XP (hard)
+        6: 3.0,   # 150 XP (very_hard)
+        7: 3.0    # 150 XP (very_hard) - same as level 6
+    }
+    
+    multiplier = level_multipliers.get(level, 1.0)
+    return round(base_xp * multiplier)
 
 def parse_options(options_str):
     """Parse options string (JSON or comma-separated) into list"""
@@ -89,7 +109,7 @@ def process_csv_upload(file_path, user_id=None):
                         continue
                     
                     # Validate difficulty
-                    valid_difficulties = ['easy', 'medium', 'hard']
+                    valid_difficulties = ['easy', 'medium', 'hard', 'very_hard']
                     if question_data['difficulty'] not in valid_difficulties:
                         errors.append(f"Row {row_num}: Invalid difficulty. Must be one of {valid_difficulties}")
                         continue
@@ -145,10 +165,16 @@ def check_answer(question_id, user_answer, user_id):
     else:
         is_correct = correct_answer == user_answer_normalized
     
-    # Calculate XP
+    # Calculate XP based on difficulty and level
     xp_earned = 0
     if is_correct:
-        xp_earned = XP_VALUES.get(question.difficulty, 10)
+        # Get level_required from question if available, default to 1
+        # Note: Python Flask model may not have level_required field, so default to 1
+        try:
+            level = question.level_required if hasattr(question, 'level_required') else 1
+        except:
+            level = 1
+        xp_earned = calculate_xp(question.difficulty, level)
         user.total_xp += xp_earned
     
     # Record progress

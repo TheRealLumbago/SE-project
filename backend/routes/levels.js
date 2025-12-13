@@ -8,15 +8,17 @@ router.get('/', authenticateToken, async (req, res) => {
   try {
     const userId = req.user.id;
     
-    // Get user's current XP and level
+    // Get user's current XP, level, and role
     const user = await db.getAsync(
-      'SELECT total_xp, current_level FROM user WHERE id = ?',
+      'SELECT total_xp, current_level, role FROM user WHERE id = ?',
       [userId]
     );
     
     if (!user) {
       return res.status(404).json({ error: 'User not found' });
     }
+    
+    const isAdmin = user.role === 'admin';
     
     // Get all levels
     const levels = await db.allAsync(
@@ -31,7 +33,8 @@ router.get('/', authenticateToken, async (req, res) => {
           [level.level_number]
         );
         
-        const isUnlocked = user.total_xp >= level.xp_required;
+        // Admins have all levels unlocked
+        const isUnlocked = isAdmin || user.total_xp >= level.xp_required;
         const isCurrentLevel = user.current_level === level.level_number;
         
         return {

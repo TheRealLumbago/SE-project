@@ -68,8 +68,16 @@ function initializeDatabase() {
       description TEXT
     )`);
 
-    // Initialize default levels with increasing XP requirements
-    db.run(`INSERT OR IGNORE INTO level (level_number, name, xp_required, description) VALUES
+    // Initialize default levels with XP requirements
+    // Designed so that 10 questions = 1 level up
+    // Level 1: 0 XP (start)
+    // Level 2: 100 XP (10 questions × 10 XP)
+    // Level 3: 250 XP (100 + 10 questions × 15 XP)
+    // Level 4: 500 XP (250 + 10 questions × 25 XP)
+    // Level 5: 1000 XP (500 + 10 questions × 50 XP)
+    // Level 6: 2000 XP (1000 + 10 questions × 100 XP)
+    // Level 7: 3500 XP (2000 + 10 questions × 150 XP)
+    db.run(`INSERT OR REPLACE INTO level (level_number, name, xp_required, description) VALUES
       (1, 'Beginner', 0, 'Start your cybersecurity journey'),
       (2, 'Novice', 100, 'You are learning the basics'),
       (3, 'Intermediate', 250, 'Building your skills'),

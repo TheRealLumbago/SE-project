@@ -1,311 +1,144 @@
-question_text,question_type,correct_answer,category,difficulty,options
-"What is phishing?",multiple_choice,"A type of cyber attack","phishing",easy,"A type of cyber attack,A type of fish,A programming language,A database"
-"Phishing attacks always come via email.",true_false,"False","phishing",medium,
-"What is two-factor authentication?",short_answer,"An authentication method requiring two forms of verification","authentication",hard,
-"Which of the following is a common sign of a phishing email?",multiple_choice,"Urgent language requesting immediate action","phishing",medium,"Urgent language requesting immediate action,Professional formatting,Correct spelling,Personalized greeting"
-"Ransomware encrypts files and demands payment.",true_false,"True","malware",easy,
-"What is social engineering?",short_answer,"Manipulating people to reveal confidential information","social engineering",medium,
-"Strong passwords should be at least 8 characters long.",true_false,"True","password security",easy,
-"Which protocol provides secure communication over a network?",multiple_choice,"HTTPS","network security",medium,"HTTP,HTTPS,FTP,Telnet"
-"What is a firewall?",short_answer,"A network security device that monitors and filters network traffic","network security",hard,
-"SQL injection attacks target web application databases.",true_false,"True","web security",medium,
-
-question_text,question_type,correct_answer,category,difficulty,options
-"What is phishing?",multiple_choice,"A type of cyber attack","phishing",easy,"A type of cyber attack,A type of fish,A programming language,A database"
-"Phishing attacks always come via email.",true_false,"False","phishing",medium,
-"Which of the following is a common sign of a phishing email?",multiple_choice,"Urgent language requesting immediate action","phishing",medium,"Urgent language requesting immediate action,Professional formatting,Correct spelling,Personalized greeting"
-"Ransomware encrypts files and demands payment.",true_false,"True","malware",easy,
-"Strong passwords should be at least 8 characters long.",true_false,"True","password security",easy,
-"Which protocol provides secure communication over a network?",multiple_choice,"HTTPS","network security",medium,"HTTP,HTTPS,FTP,Telnet"
-"SQL injection attacks target web application databases.",true_false,"True","web security",medium,
-"What is two-factor authentication (2FA)?",multiple_choice,"An authentication method requiring two forms of verification","authentication",medium,"An authentication method requiring two forms of verification,A type of encryption,A backup system,A firewall configuration"
-"Public Wi-Fi networks are always safe to use.",true_false,"False","network security",easy,
-"What does VPN stand for?",multiple_choice,"Virtual Private Network","network security",medium,"Virtual Private Network,Very Private Network,Verified Public Network,Visual Protection Network"
-"Malware can only infect Windows computers.",true_false,"False","malware",easy,
-"Which of the following is the strongest password?",multiple_choice,"Tr0ub4dor&3","password security",hard,"password123,Tr0ub4dor&3,12345678,admin"
-"Encryption converts readable data into unreadable format.",true_false,"True","encryption",easy,
-"What is a DDoS attack?",multiple_choice,"Distributed Denial of Service attack","network security",medium,"Distributed Denial of Service attack,Data Destruction of System,Direct Download of Software,Database Design Optimization"
-"Antivirus software provides 100% protection against all threats.",true_false,"False","malware",medium,
-"Which port is commonly used for HTTPS?",multiple_choice,"443","network security",hard,"80,443,21,25"
-"Social engineering relies on technical vulnerabilities.",true_false,"False","social engineering",medium,
-"What is a firewall?",multiple_choice,"A network security device that monitors and filters network traffic","network security",medium,"A network security device that monitors and filters network traffic,A type of virus,A backup system,A password manager"
-"XSS attacks can steal user session cookies.",true_false,"True","web security",medium,
-"Which encryption algorithm is considered most secure?",multiple_choice,"AES-256","encryption",hard,"DES,AES-256,MD5,RC4"
-"All websites with HTTPS are completely secure.",true_false,"False","web security",medium,
-"What is a zero-day vulnerability?",multiple_choice,"A security flaw unknown to the vendor","vulnerabilities",hard,"A security flaw unknown to the vendor,A bug that occurs at midnight,A vulnerability that affects zero users,A type of malware"
-"Password managers are unsafe to use.",true_false,"False","password security",easy,
-"Which of the following is a type of malware?",multiple_choice,"Trojan horse","malware",medium,"Trojan horse,Firewall,Encryption,VPN"
-"Biometric authentication is more secure than passwords alone.",true_false,"True","authentication",medium,
-"What does SSL stand for?",multiple_choice,"Secure Sockets Layer","encryption",medium,"Secure Sockets Layer,Super Safe Login,Simple Security Layer,Standard Security Level"
-"Clicking on suspicious links is safe if you have antivirus.",true_false,"False","phishing",easy,
-"Which of the following is a best practice for password security?",multiple_choice,"Use unique passwords for each account","password security",medium,"Use the same password everywhere,Use unique passwords for each account,Share passwords with friends,Write passwords on sticky notes"
-"Multi-factor authentication requires at least two different factors.",true_false,"True","authentication",medium,
-"What is a man-in-the-middle attack?",multiple_choice,"An attack where an attacker intercepts communication","network security",hard,"An attack where an attacker intercepts communication,An attack on a single person,An attack using malware,An attack on databases"
-"Backing up data regularly protects against ransomware.",true_false,"True","malware",easy,
-"Which HTTP status code indicates a successful request?",multiple_choice,"200","web security",medium,"404,500,200,403"
-"All email attachments are safe to open.",true_false,"False","phishing",easy,
-"What is penetration testing?",multiple_choice,"Authorized simulated cyberattack to test security","security testing",hard,"Unauthorized hacking,Authorized simulated cyberattack to test security,Installing antivirus,Updating software"
-"Using public charging stations is always safe.",true_false,"False","network security",medium,
-"Which of the following is NOT a type of authentication factor?",multiple_choice,"Something you forgot","authentication",medium,"Something you know,Something you have,Something you are,Something you forgot"
-"Encryption keys should be shared publicly.",true_false,"False","encryption",easy,
-"What is a botnet?",multiple_choice,"A network of compromised computers controlled by an attacker","malware",hard,"A network of compromised computers controlled by an attacker,A type of firewall,A backup network,A secure network"
-"Regular software updates help prevent security vulnerabilities.",true_false,"True","vulnerabilities",easy,
-"Which of the following is a secure password practice?",multiple_choice,"Change passwords periodically","password security",medium,"Share passwords via email,Change passwords periodically,Use personal information in passwords,Reuse old passwords"
-"Phishing can occur through text messages (smishing).",true_false,"True","phishing",medium,
-"What is the purpose of a honeypot?",multiple_choice,"To detect and study cyberattacks","security testing",hard,"To store honey,To detect and study cyberattacks,To encrypt data,To backup files"
-"All cookies are harmful to privacy.",true_false,"False","web security",medium,
-"Which of the following is a common phishing technique?",multiple_choice,"Creating fake websites that look legitimate","phishing",medium,"Creating fake websites that look legitimate,Sending encrypted emails,Using strong passwords,Installing antivirus"
-"Encryption makes data unreadable without the decryption key.",true_false,"True","encryption",easy,
-"What is a security patch?",multiple_choice,"A software update that fixes security vulnerabilities","vulnerabilities",medium,"A type of malware,A software update that fixes security vulnerabilities,A backup file,A password"
-"Using the same password for multiple accounts is recommended.",true_false,"False","password security",easy,
-"Which protocol is used for secure email transmission?",multiple_choice,"SMTPS","network security",hard,"HTTP,FTP,SMTPS,Telnet"
-"Social engineering attacks exploit human psychology.",true_false,"True","social engineering",medium,
-"What is the primary purpose of a VPN?",multiple_choice,"To create a secure encrypted connection over a public network","network security",medium,"To create a secure encrypted connection over a public network,To speed up internet connection,To store passwords,To block all websites"
-"All malware requires user interaction to infect a system.",true_false,"False","malware",medium,
-"Which of the following is a strong authentication method?",multiple_choice,"Biometric + Password combination","authentication",hard,"Password only,Biometric + Password combination,Username only,No authentication"
-"What is a security vulnerability?",multiple_choice,"A weakness that can be exploited by attackers","vulnerabilities",medium,"A type of firewall,A weakness that can be exploited by attackers,A backup system,A strong password"
-"Deleting files from the recycle bin permanently removes them.",true_false,"False","data security",medium,
-"Which of the following helps prevent SQL injection?",multiple_choice,"Using parameterized queries","web security",hard,"Storing passwords in plain text,Using parameterized queries,Disabling firewalls,Sharing database credentials"
-"Regular security audits are unnecessary for small businesses.",true_false,"False","security testing",medium,
-"What is the difference between authentication and authorization?",multiple_choice,"Authentication verifies identity; authorization determines access rights","authentication",hard,"They are the same thing,Authentication verifies identity; authorization determines access rights,Authentication is for passwords only,Authorization is for encryption only"
-"All websites require HTTPS for security.",true_false,"False","web security",medium,
-"Which of the following is a red flag for phishing?",multiple_choice,"Requests for sensitive information via email","phishing",medium,"Professional email formatting,Requests for sensitive information via email,Correct spelling and grammar,Company logo present"
-"Encryption can be broken with enough computing power.",true_false,"True","encryption",hard,
-"What is the purpose of a security policy?",multiple_choice,"To establish rules and procedures for protecting information","security testing",medium,"To store passwords,To establish rules and procedures for protecting information,To encrypt all data,To block all network traffic"
-"Using biometric authentication eliminates all security risks.",true_false,"False","authentication",medium,
-"Which of the following is a type of social engineering attack?",multiple_choice,"Pretexting","social engineering",hard,"Encryption,Pretexting,Firewall configuration,Password hashing"
-"All network traffic should be encrypted.",true_false,"False","network security",hard,
-"What is the main goal of cybersecurity?",multiple_choice,"To protect information systems from threats","general",easy,"To hack systems,To protect information systems from threats,To slow down networks,To delete all data"
-"Antivirus software needs to be updated regularly.",true_false,"True","malware",easy,
-"Which of the following is a secure way to store passwords?",multiple_choice,"Using a password manager","password security",medium,"Writing them down on paper,Using a password manager,Storing in a text file,Sharing via email"
-"All phishing emails contain obvious spelling errors.",true_false,"False","phishing",medium,
-"What is a security incident?",multiple_choice,"An event that compromises the security of information systems","security testing",medium,"A software update,An event that compromises the security of information systems,A backup process,A password change"
-"Using public computers is safe for sensitive activities.",true_false,"False","network security",easy,
-"Which of the following is essential for network security?",multiple_choice,"Firewall","network security",easy,"No security measures,Firewall,Sharing passwords,Disabling updates"
-"What is the purpose of encryption in cybersecurity?",multiple_choice,"To protect data confidentiality","encryption",medium,"To speed up networks,To protect data confidentiality,To delete files,To share passwords"
-"All security vulnerabilities can be patched immediately.",true_false,"False","vulnerabilities",medium,
-"Which of the following is a best practice for email security?",multiple_choice,"Be cautious with email attachments","phishing",easy,"Open all attachments,Be cautious with email attachments,Share email passwords,Ignore suspicious emails"
-"Multi-factor authentication makes accounts more secure.",true_false,"True","authentication",easy,
-"What is a security breach?",multiple_choice,"Unauthorized access to confidential data","security testing",medium,"A software update,Unauthorized access to confidential data,A backup process,A password reset"
-"All encrypted data is completely secure forever.",true_false,"False","encryption",hard,
-"Which of the following helps protect against malware?",multiple_choice,"Keeping software updated","malware",easy,"Ignoring updates,Keeping software updated,Disabling antivirus,Opening suspicious files"
-"Social engineering attacks are always technical in nature.",true_false,"False","social engineering",easy,
-"What is the role of a security analyst?",multiple_choice,"To monitor and respond to security threats","security testing",medium,"To create malware,To monitor and respond to security threats,To disable security measures,To share passwords"
-"All passwords should be changed daily.",true_false,"False","password security",medium,
-"Which of the following is a characteristic of strong encryption?",multiple_choice,"Uses complex algorithms","encryption",hard,"Uses simple codes,Uses complex algorithms,Is easy to break,Requires no keys"
-"Phishing attacks only target individuals, not organizations.",true_false,"False","phishing",medium,
-"What is endpoint security?",multiple_choice,"Protecting individual devices from threats","network security",medium,"Protecting only servers,Protecting individual devices from threats,Blocking all internet access,Disabling all security"
-"All network protocols are secure by default.",true_false,"False","network security",medium,
-"Which of the following is important for data protection?",multiple_choice,"Regular backups","data security",easy,"No backups,Regular backups,Sharing all data,Deleting backups"
-"What is the purpose of a security audit?",multiple_choice,"To assess and improve security measures","security testing",medium,"To create vulnerabilities,To assess and improve security measures,To disable security,To share passwords"
-"All authentication methods are equally secure.",true_false,"False","authentication",hard,
-"Which of the following is a sign of a secure website?",multiple_choice,"HTTPS and valid SSL certificate","web security",medium,"No encryption,HTTPS and valid SSL certificate,HTTP only,No security indicators"
-"Social media platforms are always safe for sharing personal information.",true_false,"False","social engineering",easy,
-"What is the difference between a virus and a worm?",multiple_choice,"Worms can spread without user interaction","malware",hard,"They are identical,Worms can spread without user interaction,Viruses are always harmless,Worms only affect networks"
-"All security incidents should be reported immediately.",true_false,"True","security testing",easy,
-"Which of the following is a component of cybersecurity?",multiple_choice,"Network security","general",easy,"Ignoring threats,Network security,Sharing passwords,Disabling firewalls"
-"What is a security control?",multiple_choice,"A measure to reduce security risks","security testing",medium,"A type of malware,A measure to reduce security risks,A password only,A backup file"
-"All encryption methods are equally strong.",true_false,"False","encryption",medium,
-"Which of the following helps prevent unauthorized access?",multiple_choice,"Strong authentication mechanisms","authentication",medium,"Weak passwords,Strong authentication mechanisms,Sharing credentials,No authentication"
-"Phishing awareness training can reduce attack success rates.",true_false,"True","phishing",medium,
-"What is the principle of least privilege?",multiple_choice,"Granting users only the minimum access necessary","authentication",hard,"Giving everyone full access,Granting users only the minimum access necessary,No access control,Sharing all credentials"
-"All security vulnerabilities are discovered immediately.",true_false,"False","vulnerabilities",hard,
-"Which of the following is a type of network attack?",multiple_choice,"DDoS attack","network security",medium,"Password change,DDoS attack,Software update,Backup process"
-"What is security awareness training?",multiple_choice,"Educating users about security threats and best practices","security testing",medium,"Teaching hacking,Educating users about security threats and best practices,Disabling security,Sharing passwords"
-"All devices connected to the internet are vulnerable to attacks.",true_false,"True","network security",medium,
-"Which of the following is essential for password security?",multiple_choice,"Using complex and unique passwords","password security",easy,"Simple passwords,Using complex and unique passwords,Reusing passwords,Sharing passwords"
-"What is the purpose of a security policy?",multiple_choice,"To establish guidelines for protecting information","security testing",medium,"To create vulnerabilities,To establish guidelines for protecting information,To disable security,To share passwords"
-"All encryption keys should be stored in plain text.",true_false,"False","encryption",easy,
-"Which of the following is a best practice for cybersecurity?",multiple_choice,"Regular security updates and patches","general",easy,"Ignoring updates,Regular security updates and patches,Disabling security,Sharing credentials"
-"Social engineering attacks can be prevented with technical solutions alone.",true_false,"False","social engineering",hard,
-"What is a security vulnerability assessment?",multiple_choice,"Identifying weaknesses in security systems","security testing",hard,"Creating vulnerabilities,Identifying weaknesses in security systems,Disabling security,Sharing passwords"
-"All phishing attempts are easy to identify.",true_false,"False","phishing",hard,
-"Which of the following is important for incident response?",multiple_choice,"Having a response plan ready","security testing",medium,"No plan,Having a response plan ready,Ignoring incidents,Sharing incident details publicly"
-"What is the role of encryption in data protection?",multiple_choice,"To ensure data confidentiality and integrity","encryption",medium,"To slow down systems,To ensure data confidentiality and integrity,To delete data,To share passwords"
-"All network devices should have default passwords.",true_false,"False","password security",easy,
-"Which of the following is a characteristic of secure authentication?",multiple_choice,"Multi-factor authentication","authentication",medium,"Single password only,Multi-factor authentication,No authentication,Sharing credentials"
-"What is a security breach response plan?",multiple_choice,"A documented procedure for handling security incidents","security testing",medium,"A type of malware,A documented procedure for handling security incidents,Disabling security,Sharing passwords"
-"All security measures are 100% effective.",true_false,"False","general",medium,
-"Which of the following helps protect against social engineering?",multiple_choice,"Security awareness training","social engineering",medium,"Ignoring training,Security awareness training,Sharing information,No verification"
-"What is the importance of regular security updates?",multiple_choice,"To patch known vulnerabilities","vulnerabilities",easy,"To slow down systems,To patch known vulnerabilities,To create vulnerabilities,To disable security"
-"All encrypted communications are completely anonymous.",true_false,"False","encryption",hard,
-"Which of the following is a secure method for password storage?",multiple_choice,"Hashing with salt","password security",hard,"Plain text storage,Hashing with salt,Email storage,Public sharing"
-"What is the purpose of network segmentation?",multiple_choice,"To isolate network resources and limit attack surface","network security",hard,"To slow networks,To isolate network resources and limit attack surface,To share all resources,To disable security"
-"All security threats come from external sources.",true_false,"False","general",medium,
-"Which of the following is essential for secure communication?",multiple_choice,"End-to-end encryption","encryption",hard,"No encryption,End-to-end encryption,Plain text,Public sharing"
-"What is a security information and event management (SIEM) system?",multiple_choice,"A tool for collecting and analyzing security logs","security testing",hard,"A type of malware,A tool for collecting and analyzing security logs,Disabling security,Sharing passwords"
-"All passwords should be memorable words.",true_false,"False","password security",medium,
-"Which of the following is a red flag in cybersecurity?",multiple_choice,"Unexpected requests for sensitive information","phishing",easy,"Professional communication,Unexpected requests for sensitive information,Regular updates,Strong passwords"
-"What is the difference between a threat and a vulnerability?",multiple_choice,"A threat is a potential danger; a vulnerability is a weakness","vulnerabilities",hard,"They are the same,A threat is a potential danger; a vulnerability is a weakness,Threats are always external,Vulnerabilities don't exist"
-"All security incidents require immediate public disclosure.",true_false,"False","security testing",hard,
-"Which of the following is important for data privacy?",multiple_choice,"Encryption and access controls","data security",medium,"No protection,Encryption and access controls,Public sharing,No controls"
-"What is the purpose of a security baseline?",multiple_choice,"To establish minimum security requirements","security testing",medium,"To create vulnerabilities,To establish minimum security requirements,To disable security,To share passwords"
-"All authentication factors are equally secure.",true_false,"False","authentication",hard,
-"Which of the following helps prevent data breaches?",multiple_choice,"Strong access controls and encryption","data security",medium,"No controls,Strong access controls and encryption,Public access,No encryption"
-"What is the role of a firewall in network security?",multiple_choice,"To filter and control network traffic","network security",easy,"To slow networks,To filter and control network traffic,To share passwords,To disable security"
-"All security policies should be static and never updated.",true_false,"False","security testing",medium,
-"Which of the following is a best practice for secure coding?",multiple_choice,"Input validation and sanitization","web security",hard,"No validation,Input validation and sanitization,Hardcoded credentials,No error handling"
-"What is the importance of security monitoring?",multiple_choice,"To detect and respond to threats in real-time","security testing",medium,"To ignore threats,To detect and respond to threats in real-time,To disable security,To share passwords"
-"All network attacks can be prevented with firewalls alone.",true_false,"False","network security",hard,
-"Which of the following is essential for secure authentication?",multiple_choice,"Strong password policies","authentication",easy,"Weak passwords,Strong password policies,No passwords,Sharing passwords"
-"What is a security control framework?",multiple_choice,"A structured approach to managing security","security testing",hard,"A type of malware,A structured approach to managing security,Disabling security,Sharing passwords"
-"All encryption algorithms are equally secure.",true_false,"False","encryption",hard,
-"Which of the following helps protect against phishing?",multiple_choice,"Email filtering and user education","phishing",medium,"No protection,Email filtering and user education,Opening all emails,Sharing credentials"
-"What is the purpose of security testing?",multiple_choice,"To identify vulnerabilities before attackers do","security testing",medium,"To create vulnerabilities,To identify vulnerabilities before attackers do,To disable security,To share passwords"
-"All security measures should be implemented without user training.",true_false,"False","security testing",hard,
-"Which of the following is important for secure password management?",multiple_choice,"Using a password manager","password security",easy,"Writing passwords down,Using a password manager,Sharing passwords,Reusing passwords"
-"What is the difference between symmetric and asymmetric encryption?",multiple_choice,"Symmetric uses one key; asymmetric uses a key pair","encryption",hard,"They are identical,Symmetric uses one key; asymmetric uses a key pair,Asymmetric is always weaker,Symmetric is never used"
-"All security vulnerabilities are immediately exploitable.",true_false,"False","vulnerabilities",medium,
-"Which of the following is a component of defense in depth?",multiple_choice,"Multiple layers of security controls","security testing",hard,"Single security measure,Multiple layers of security controls,No security,Sharing passwords"
-"What is the purpose of access control?",multiple_choice,"To restrict access to authorized users only","authentication",medium,"To allow everyone access,To restrict access to authorized users only,To share passwords,To disable security"
-"All security incidents are caused by external attackers.",true_false,"False","security testing",medium,
-"Which of the following is essential for secure data transmission?",multiple_choice,"TLS/SSL encryption","encryption",medium,"Plain text,TLS/SSL encryption,No encryption,Public sharing"
-"What is a security risk assessment?",multiple_choice,"Evaluating potential threats and vulnerabilities","security testing",medium,"Creating risks,Evaluating potential threats and vulnerabilities,Ignoring threats,Sharing passwords"
-"All authentication methods provide the same level of security.",true_false,"False","authentication",hard,
-"Which of the following helps prevent unauthorized access?",multiple_choice,"Multi-factor authentication","authentication",easy,"Single password,Multi-factor authentication,No authentication,Sharing credentials"
-"What is the importance of security documentation?",multiple_choice,"To maintain consistent security practices","security testing",medium,"To create vulnerabilities,To maintain consistent security practices,To disable security,To share passwords"
-"All security controls are technical in nature.",true_false,"False","security testing",hard,
-"Which of the following is a best practice for network security?",multiple_choice,"Network segmentation and monitoring","network security",hard,"No segmentation,Network segmentation and monitoring,Open access,No monitoring"
-"What is the purpose of a security incident response team?",multiple_choice,"To coordinate response to security incidents","security testing",medium,"To create incidents,To coordinate response to security incidents,To ignore incidents,To share passwords"
-"All passwords should be changed every day.",true_false,"False","password security",hard,
-"Which of the following is important for secure authentication?",multiple_choice,"Regular review of access rights","authentication",medium,"No review,Regular review of access rights,Unlimited access,Sharing credentials"
-"What is the role of encryption in protecting data at rest?",multiple_choice,"To protect stored data from unauthorized access","encryption",hard,"To speed up access,To protect stored data from unauthorized access,To delete data,To share passwords"
-"All security policies are one-size-fits-all.",true_false,"False","security testing",hard,
-"Which of the following helps protect against malware?",multiple_choice,"Antivirus software and safe browsing practices","malware",easy,"No protection,Antivirus software and safe browsing practices,Opening suspicious files,Disabling antivirus"
-"What is the importance of security awareness?",multiple_choice,"To help users recognize and avoid threats","security testing",easy,"To ignore threats,To help users recognize and avoid threats,To disable security,To share passwords"
-"All network traffic should be monitored.",true_false,"False","network security",hard,
-"Which of the following is essential for secure password storage?",multiple_choice,"Hashing with salt and pepper","password security",hard,"Plain text,Hashing with salt and pepper,Email storage,Public sharing"
-"What is the purpose of security controls?",multiple_choice,"To reduce security risks and protect assets","security testing",medium,"To create risks,To reduce security risks and protect assets,To disable security,To share passwords"
-"All authentication systems are infallible.",true_false,"False","authentication",hard,
-"Which of the following is a best practice for cybersecurity?",multiple_choice,"Regular security assessments and updates","general",medium,"Ignoring updates,Regular security assessments and updates,Disabling security,Sharing credentials"
-"What is the difference between a security policy and a security procedure?",multiple_choice,"Policy sets rules; procedure defines steps to follow","security testing",hard,"They are identical,Policy sets rules; procedure defines steps to follow,Policies are technical only,Procedures are optional"
-"All security vulnerabilities can be eliminated completely.",true_false,"False","vulnerabilities",hard,
-"Which of the following is important for secure authentication?",multiple_choice,"Implementing strong password requirements","authentication",easy,"Weak passwords,Implementing strong password requirements,No passwords,Sharing passwords"
-"What is the purpose of security monitoring and logging?",multiple_choice,"To detect and investigate security events","security testing",medium,"To ignore events,To detect and investigate security events,To disable security,To share passwords"
-"All encryption methods are suitable for all use cases.",true_false,"False","encryption",hard,
-"Which of the following helps prevent social engineering attacks?",multiple_choice,"User training and verification procedures","social engineering",medium,"No training,User training and verification procedures,Sharing information,No verification"
-"What is the importance of security governance?",multiple_choice,"To ensure effective security management","security testing",hard,"To ignore security,To ensure effective security management,To disable security,To share passwords"
-"All security measures work independently.",true_false,"False","security testing",hard,
-"Which of the following is essential for secure password management?",multiple_choice,"Using unique passwords for each account","password security",easy,"Reusing passwords,Using unique passwords for each account,Sharing passwords,Writing passwords down"
-"What is the role of encryption in data integrity?",multiple_choice,"To ensure data has not been tampered with","encryption",hard,"To speed up data,To ensure data has not been tampered with,To delete data,To share passwords"
-"All security incidents are preventable.",true_false,"False","security testing",hard,
-"Which of the following is a best practice for network security?",multiple_choice,"Implementing defense in depth","network security",hard,"Single security layer,Implementing defense in depth,No security,Sharing passwords"
-"What is the purpose of security awareness programs?",multiple_choice,"To educate users about security threats","security testing",easy,"To ignore threats,To educate users about security threats,To disable security,To share passwords"
-"All authentication factors provide equal security.",true_false,"False","authentication",hard,
-"Which of the following is important for secure data handling?",multiple_choice,"Classification and encryption","data security",medium,"No protection,Classification and encryption,Public sharing,No encryption"
-"What is the difference between preventive and detective security controls?",multiple_choice,"Preventive stops attacks; detective identifies them","security testing",hard,"They are identical,Preventive stops attacks; detective identifies them,Preventive is always better,Detective is unnecessary"
-"All security policies should be complex and difficult to understand.",true_false,"False","security testing",medium,
-"Which of the following helps protect against unauthorized access?",multiple_choice,"Strong authentication and authorization controls","authentication",medium,"Weak controls,Strong authentication and authorization controls,No controls,Sharing credentials"
-"What is the importance of security metrics?",multiple_choice,"To measure effectiveness of security controls","security testing",hard,"To ignore security,To measure effectiveness of security controls,To disable security,To share passwords"
-"All encryption keys should be the same length.",true_false,"False","encryption",hard,
-"Which of the following is essential for secure authentication?",multiple_choice,"Regular password updates","password security",medium,"Never changing passwords,Regular password updates,Using old passwords,Sharing passwords"
-"What is the purpose of security incident management?",multiple_choice,"To effectively respond to and recover from incidents","security testing",medium,"To create incidents,To effectively respond to and recover from incidents,To ignore incidents,To share passwords"
-"All security vulnerabilities are equally critical.",true_false,"False","vulnerabilities",hard,
-"Which of the following is a best practice for cybersecurity?",multiple_choice,"Implementing layered security controls","general",hard,"Single security measure,Implementing layered security controls,No security,Sharing passwords"
-"What is the role of encryption in authentication?",multiple_choice,"To protect authentication credentials","encryption",hard,"To slow authentication,To protect authentication credentials,To share credentials,To disable security"
-"All security measures require equal resources.",true_false,"False","security testing",hard,
-"Which of the following helps prevent password attacks?",multiple_choice,"Account lockout policies and strong passwords","password security",medium,"Weak passwords,Account lockout policies and strong passwords,No lockouts,Sharing passwords"
-"What is the importance of security compliance?",multiple_choice,"To meet regulatory and legal requirements","security testing",hard,"To ignore regulations,To meet regulatory and legal requirements,To disable security,To share passwords"
-"All authentication systems use the same methods.",true_false,"False","authentication",hard,
-"Which of the following is essential for secure network communication?",multiple_choice,"Encryption and secure protocols","network security",hard,"Plain text,Encryption and secure protocols,No encryption,Public protocols"
-"What is the purpose of security risk management?",multiple_choice,"To identify and mitigate security risks","security testing",medium,"To create risks,To identify and mitigate security risks,To ignore risks,To share passwords"
-"All security controls are implemented at the network level.",true_false,"False","security testing",hard,
-"Which of the following is important for secure password creation?",multiple_choice,"Using a mix of characters and sufficient length","password security",easy,"Short passwords,Using a mix of characters and sufficient length,Common words,Personal information"
-"What is the difference between security and privacy?",multiple_choice,"Security protects systems; privacy protects personal data","general",hard,"They are identical,Security protects systems; privacy protects personal data,Security is only technical,Privacy doesn't matter"
-"All security incidents result in data breaches.",true_false,"False","security testing",hard,
-"Which of the following is a best practice for authentication?",multiple_choice,"Using multi-factor authentication","authentication",easy,"Single factor,Using multi-factor authentication,No authentication,Sharing credentials"
-"What is the role of encryption in secure communication?",multiple_choice,"To protect data in transit","encryption",medium,"To slow communication,To protect data in transit,To delete data,To share passwords"
-"All security vulnerabilities can be patched instantly.",true_false,"False","vulnerabilities",hard,
-
-"In PKI, which attack targets the CA to undermine trust?",multiple_choice,"Compromise of root CA","cryptography","very_hard","Compromise of root CA,Replay attack,Privilege escalation,Side-channel attack"
-"True or False: Perfect Forward Secrecy prevents compromise of past sessions even if long-term keys are exposed.",true_false,"True","cryptography","very_hard",
-"Which protocol weakness allows downgrade attacks during TLS negotiation?",multiple_choice,"Support for legacy cipher suites","network security","very_hard","Key pinning,Support for legacy cipher suites,Strict HSTS enforcement,OCSP stapling"
-"True or False: DNSSEC prevents all DNS-based attacks.",true_false,"False","network security","very_hard",
-"In Kerberos, which ticket is primarily targeted during Pass-the-Ticket attacks?",multiple_choice,"TGT (Ticket Granting Ticket)","active directory","very_hard","TGT,TGS,Service ticket,Access token"
-"True or False: In zero-trust networks, lateral movement should be impossible without continuous re-authentication.",true_false,"True","network architecture","very_hard",
-"Which technique is used to detect kernel-level rootkits by checking system call integrity?",multiple_choice,"Cross-view detection","malware analysis","very_hard","Hash comparison,Cross-view detection,Port scanning,Stack canaries"
-"True or False: ASLR is ineffective against information leakage exploits.",true_false,"True","exploit mitigation","very_hard",
-"Which attack extracts password hashes using replication privileges in AD?",multiple_choice,"DCSync attack","active directory","very_hard","Golden ticket,DCSync attack,Kerberoasting,Pass-the-Hash"
-"True or False: A web cache poisoning attack manipulates caches to serve malicious responses.",true_false,"True","web security","very_hard",
-"Which type of malware persists by modifying the system’s bootloader?",multiple_choice,"Bootkit","malware","very_hard","Adware,Spyware,Bootkit,Dropper"
-"True or False: TLS 1.3 removed support for RSA key exchange.",true_false,"True","cryptography","very_hard",
-"What technique allows attackers to break ASLR using sprayed memory patterns?",multiple_choice,"Heap spraying","exploit development","very_hard","Heap spraying,Key spraying,Cache poisoning,ROP chaining"
-"True or False: SMURF attacks rely on spoofed ARP packets.",true_false,"False","network attacks","very_hard",
-"Which protocol can be abused for reflected DDoS using large amplification factors?",multiple_choice,"NTP","network attacks","very_hard","SSH,NTP,SMTP,IMAP"
-"True or False: EDR systems can be bypassed using process hollowing techniques.",true_false,"True","endpoint security","very_hard",
-"Which type of vulnerability arises from TOCTOU issues?",multiple_choice,"Race condition","software security","very_hard","Buffer overflow,Race condition,Out-of-bounds read,Stack exhaustion"
-"True or False: IPv6 is immune to spoofing-based attacks.",true_false,"False","network security","very_hard",
-"What technique is commonly used to hide malicious code inside images?",multiple_choice,"Steganography","malware","very_hard","Steganography,Obfuscation,Polymerization,ROP injection"
-"True or False: MAC address randomization fully prevents device tracking.",true_false,"False","privacy","very_hard",
-"In cloud security, which attack targets insecure metadata APIs?",multiple_choice,"Instance credential theft","cloud","very_hard","Privilege pruning,Instance credential theft,Hypervisor injection,Container breakout"
-"True or False: Side-channel attacks can extract AES keys using power analysis.",true_false,"True","cryptography","very_hard",
-"What network attack abuses fragmentation to evade IDS systems?",multiple_choice,"Fragmentation overlap attack","network attacks","very_hard","ARP flood,Fragmentation overlap attack,MAC flooding,SSL stripping"
-"True or False: HTTP/2 is vulnerable to request smuggling if improperly configured.",true_false,"True","web security","very_hard",
-"Which technique uses chained small gadgets to bypass DEP?",multiple_choice,"Return-Oriented Programming","exploit development","very_hard","Shimming,ROP,Heap poisoning,Double-free"
-"True or False: Full disk encryption protects data even against cold boot attacks.",true_false,"False","forensics","very_hard",
-"Which protocol is vulnerable to KRACK attacks?",multiple_choice,"WPA2","wireless security","very_hard","WEP,WPA2,Bluetooth LE,Zigbee"
-"True or False: DLL sideloading abuses trusted applications to load malicious libraries.",true_false,"True","malware analysis","very_hard",
-"What technique allows malware to hide processes by falsifying API responses?",multiple_choice,"API hooking","malware","very_hard","Sandboxing,API hooking,Heap spraying,ROP chaining"
-"True or False: OAuth 2.0 implicit flow is vulnerable to token leakage.",true_false,"True","web security","very_hard",
-"In Active Directory, which attack forges authentication tickets using the KRBTGT hash?",multiple_choice,"Golden Ticket attack","active directory","very_hard","Silver ticket,Golden Ticket attack,DCSync,Skeleton key"
-"True or False: Container escapes can occur via misconfigured capabilities.",true_false,"True","cloud security","very_hard",
-"Which vulnerability class involves incorrect assumptions about user-controlled object states?",multiple_choice,"Insecure deserialization","software security","very_hard","SQL injection,XSS,Insecure deserialization,CSRF"
-"True or False: ECC cryptography is resistant to Shor’s algorithm.",true_false,"False","cryptography","very_hard",
-"Which attack injects malicious data into serialized objects to trigger code execution?",multiple_choice,"Deserialization attack","application security","very_hard","CSRF,Deserialization attack,Padding oracle,Clickjacking"
-"True or False: SYN cookies help defend against SYN flood attacks.",true_false,"True","network defense","very_hard",
-"Which protocol can attackers abuse using rogue RA messages?",multiple_choice,"IPv6","network security","very_hard","IPv4,IPv6,ARP,DHCP"
-"True or False: Firmware implants can survive OS reinstallation.",true_false,"True","firmware security","very_hard",
-"What technique do attackers use to capture NTLM challenge–response traffic?",multiple_choice,"Relay attack","active directory","very_hard","Kerberoasting,Relay attack,Password spraying,Ticket forging"
-"True or False: Secure Boot prevents execution of unsigned bootloaders.",true_false,"True","firmware security","very_hard",
-"Which malware technique delays execution until certain conditions are met?",multiple_choice,"Logic bombs","malware","very_hard","Worms,Trojans,Logic bombs,RATs"
-"True or False: TLS compression vulnerabilities enabled the CRIME attack.",true_false,"True","cryptography","very_hard",
-"What attack manipulates CPU speculative execution to leak memory?",multiple_choice,"Spectre","hardware security","very_hard","XDoS,Spectre,Rowhammer,Meltdown"
-"True or False: CSRF tokens must be unpredictable and tied to a session.",true_false,"True","web security","very_hard",
-"What attack abuses bit-flipping in DRAM to corrupt memory?",multiple_choice,"Rowhammer","hardware security","very_hard","Rowhammer,Meltdown,Spectre,Cache timing"
-"True or False: NAT prevents all forms of inbound attacks.",true_false,"False","network security","very_hard",
-"Which protocol field can be manipulated to poison routing tables?",multiple_choice,"BGP attributes","network routing","very_hard","TCP window,BGP attributes,DNS flags,ARP opcode"
-"True or False: SSTI attacks allow execution of server-side template expressions.",true_false,"True","web security","very_hard",
-"What attack targets weak JWT signing methods like 'none'?",multiple_choice,"JWT algorithm confusion","authentication","very_hard","Replay attack,JWT algorithm confusion,Side-channel leak,Key stretching failure"
-"True or False: IPSec ESP provides both encryption and integrity protection.",true_false,"True","network security","very_hard",
-"What technique hides malicious code inside legitimate signed drivers?",multiple_choice,"BYOVD (Bring Your Own Vulnerable Driver)","malware","very_hard","Rootkit,BYOVD,Polyglot payload,Dynamic unpacking"
-"True or False: In LDAP injection, attackers manipulate directory queries.",true_false,"True","directory services","very_hard",
-"What vulnerability arises when padding is incorrectly validated?",multiple_choice,"Padding oracle","cryptography","very_hard","Heartbleed,Padding oracle,Key reuse,Nonce reuse"
-"True or False: ARP spoofing can be used to perform MITM attacks.",true_false,"True","network attacks","very_hard",
-"What exploit targets branch prediction units to leak memory?",multiple_choice,"Spectre Variant 2","hardware security","very_hard","Meltdown,Spectre V2,Rowhammer,ZombieLoad"
-"True or False: SAML authentication can be compromised by XML signature wrapping.",true_false,"True","identity security","very_hard",
-"What attack forces clients to downgrade to weaker encryption?",multiple_choice,"SSL stripping","web security","very_hard","Clickjacking,SSL stripping,DNS rebinding,HTTP smuggling"
-"True or False: WPA3 eliminates all offline dictionary attacks.",true_false,"False","wireless security","very_hard",
-"What vulnerability type is exploited in XXE attacks?",multiple_choice,"External entity processing","web security","very_hard","Cross-site scripting,External entity processing,Command injection,Weak hashing"
-"True or False: DNS rebinding allows attackers to bypass same-origin restrictions.",true_false,"True","web security","very_hard",
-"What technique bypasses antivirus by encrypting malware payloads?",multiple_choice,"Crypters","malware","very_hard","Beacons,Crypters,Packers,Wipers"
-"True or False: Memory forensics can detect hidden processes using kernel structure reconstruction.",true_false,"True","forensics","very_hard",
-"In container security, which issue allows overwriting host filesystem paths?",multiple_choice,"Path traversal via volume mounts","cloud security","very_hard","Privilege pruning,Path traversal via volume mounts,Capability spoofing,Image squashing"
-"True or False: ROP attacks rely on non-executable stack restrictions.",true_false,"True","exploit development","very_hard",
-"What attack targets CPU cache timings to infer secret values?",multiple_choice,"Cache timing attack","side-channel","very_hard","Bit-flip attack,Cache timing attack,Cold boot,Rowhammer"
-"True or False: SSRF can be used to access cloud metadata endpoints.",true_false,"True","cloud security","very_hard",
-"What attack abuses packet reassembly differences in IDS vs host?",multiple_choice,"Evasion via overlapping fragments","network security","very_hard","Smurf attack,Evasion via overlapping fragments,ARP spoofing,IP spoofing"
-"True or False: A Silver Ticket attack forges TGS tickets using service account hashes.",true_false,"True","active directory","very_hard",
-"What type of vulnerability is exploited by timing discrepancies in authentication?",multiple_choice,"Timing attack","cryptography","very_hard","Integer underflow,Timing attack,Buffer overflow,Format string bug"
-"True or False: OAuth refresh tokens must be stored securely due to long lifetimes.",true_false,"True","authentication","very_hard",
-"What attack injects malicious code between reverse proxies?",multiple_choice,"HTTP request smuggling","web security","very_hard","Replay attack,HTTP request smuggling,Session fixation,Header injection"
-"True or False: Malware packers compress or encrypt payloads to evade detection.",true_false,"True","malware","very_hard",
-"What attack exhausts heap memory via many small allocations?",multiple_choice,"Heap exhaustion attack","denial of service","very_hard","SYN flood,Heap exhaustion attack,ICMP flood,Slowloris"
-"True or False: IP cameras are often vulnerable due to hardcoded credentials.",true_false,"True","IoT security","very_hard",
-"What exploit causes processors to leak memory via transient execution?",multiple_choice,"Meltdown","hardware security","very_hard","Rowhammer,Meltdown,Spectre,ZombieLoad"
-"True or False: Token binding helps prevent session hijacking.",true_false,"True","web security","very_hard",
-"What DDoS method leverages SSDP for amplification?",multiple_choice,"UPnP reflection","network attacks","very_hard","Ping flood,UPnP reflection,ACK storm,SOCKS tunneling"
-"True or False: LDAP signing prevents MITM tampering.",true_false,"True","directory services","very_hard",
-"What privilege escalation technique abuses writable service binaries?",multiple_choice,"Service hijacking","windows security","very_hard","Kerberoasting,Service hijacking,Token duplication,Process injection"
-"True or False: Server-side request forgery can bypass firewalls.",true_false,"True","web security","very_hard",
-"What vulnerability arises from incorrect key reuse in encryption?",multiple_choice,"Nonce reuse attack","cryptography","very_hard","Padding oracle,Nonce reuse attack,Clickjacking,Replay attack"
-"True or False: IPv6 extension headers can be abused for IDS evasion.",true_false,"True","network security","very_hard",
-"What technique hides malware by executing only in memory?",multiple_choice,"Fileless malware","malware","very_hard","Bootkits,Fileless malware,Rootkits,Downloaders"
-"True or False: Kerberos Pre-Auth prevents offline password brute-forcing.",true_false,"True","active directory","very_hard",
-"What attack manipulates proxies to bypass authentication controls?",multiple_choice,"Proxy bypass attack","web security","very_hard","Proxy bypass attack,Header injection,CSRF,Session fixation"
-"True or False: USB HID spoofing can simulate keystrokes to execute malicious payloads.",true_false,"True","hardware attacks","very_hard",
-"What technique decrypts TLS traffic by capturing session keys from memory?",multiple_choice,"SSL key extraction","forensics","very_hard","Hashdump,SSL key extraction,Heap dump,Shadow copy"
-"True or False: DNS tunneling can be used for data exfiltration.",true_false,"True","network attacks","very_hard",
-"What type of exploit abuses insecure memory freeing operations?",multiple_choice,"Use-after-free","exploit development","very_hard","Use-after-free,Double free,Buffer overflow,Stack smash"
-"True or False: SNI sniffing can reveal the hostname even over encrypted TLS connections.",true_false,"True","network security","very_hard",
-"What technique hides C2 communication within normal HTTPS traffic?",multiple_choice,"Domain fronting","malware C2","very_hard","DNSSEC,Domain fronting,ARP proxying,Tor hidden service"
-"True or False: Recursive DNS resolvers can be abused for DDoS amplification.",true_false,"True","network attacks","very_hard"
+question_text,question_type,correct_answer,category,difficulty,options,level_required
+What is phishing?,multiple_choice,A type of cyber attack,phishing,easy,"A type of cyber attack,A legitimate email verification method,A network monitoring technique,A data encryption process",1
+What is the main goal of cybersecurity?,multiple_choice,To protect information systems from threats,general,easy,"To protect information systems from threats,To improve system performance,To manage user accounts,To monitor internet traffic",1
+Which of the following is essential for network security?,multiple_choice,Firewall,network security,easy,"Firewall,Intrusion detection system,Network switch,Traffic analyzer",1
+Which of the following is a best practice for email security?,multiple_choice,Be cautious with email attachments,phishing,easy,"Be cautious with email attachments,Open attachments from known brands,Trust emails with logos,Disable email filtering",1
+Which of the following helps protect against malware?,multiple_choice,Keeping software updated,malware,easy,"Keeping software updated,Using older stable software,Disabling unused features,Relying on default settings",1
+Which of the following helps protect against unauthorized access?,multiple_choice,Multi-factor authentication,authentication,easy,"Multi-factor authentication,Single strong password,Username-only login,Network monitoring",1
+Ransomware encrypts files and demands payment.,true_false,True,malware,easy,,1
+Strong passwords should be at least 8 characters long.,true_false,True,password security,easy,,1
+Public Wi-Fi networks are always safe to use.,true_false,False,network security,easy,,1
+Malware can only infect Windows computers.,true_false,False,malware,easy,,1
+Encryption converts readable data into unreadable format.,true_false,True,encryption,easy,,1
+Password managers are unsafe to use.,true_false,False,password security,easy,,1
+Clicking on suspicious links is safe if you have antivirus.,true_false,False,phishing,easy,,1
+Backing up data regularly protects against ransomware.,true_false,True,malware,easy,,1
+All email attachments are safe to open.,true_false,False,phishing,easy,,1
+Encryption keys should be shared publicly.,true_false,False,encryption,easy,,1
+What is malware?,multiple_choice,Malicious software designed to harm computers,malware,easy,"Malicious software designed to harm computers,Software that improves performance,Legitimate security software,A type of firewall",1
+What does HTTPS stand for?,multiple_choice,HyperText Transfer Protocol Secure,web security,easy,"HyperText Transfer Protocol Secure,HyperText Transfer Protocol Standard,HyperText Transfer Protocol System,HyperText Transfer Protocol Service",1
+Antivirus software needs to be updated regularly.,true_false,True,malware,easy,,1
+Which of the following is important for data protection?,multiple_choice,Regular backups,data security,easy,"Regular backups,Increasing storage size,File compression,Manual data sorting",2
+Which of the following is a component of cybersecurity?,multiple_choice,Network security,general,easy,"Network security,Hardware manufacturing,Graphic design,Software licensing",2
+Which of the following is essential for password security?,multiple_choice,Using complex and unique passwords,password security,easy,"Using complex and unique passwords,Changing usernames often,Writing passwords securely,Using familiar words",2
+Which of the following is a best practice for cybersecurity?,multiple_choice,Regular security updates and patches,general,easy,"Regular security updates and patches,Installing optional features only,Using default configurations,Disabling notifications",2
+What is the importance of regular security updates?,multiple_choice,To patch known vulnerabilities,vulnerabilities,easy,"To patch known vulnerabilities,To improve system speed,To add new features,To remove user accounts",2
+Which of the following is a red flag in cybersecurity?,multiple_choice,Unexpected requests for sensitive information,phishing,easy,"Unexpected requests for sensitive information,Requests through official portals,Multi-step verification,Encrypted communication",2
+What is the role of a firewall in network security?,multiple_choice,To filter and control network traffic,network security,easy,"To filter and control network traffic,To store encryption keys,To manage user passwords,To monitor file integrity",2
+Which of the following is essential for secure authentication?,multiple_choice,Strong password policies,authentication,easy,"Strong password policies,Frequent username changes,Local account storage,Password reuse rules",2
+Which of the following is important for secure password management?,multiple_choice,Using a password manager,password security,easy,"Using a password manager,Memorizing all passwords,Storing passwords in browsers only,Reusing complex passwords",2
+What is the importance of security awareness?,multiple_choice,To help users recognize and avoid threats,security testing,easy,"To help users recognize and avoid threats,To eliminate all cyber attacks,To replace security software,To automate security policies",2
+Which of the following is important for secure password creation?,multiple_choice,Using a mix of characters and sufficient length,password security,easy,"Using a mix of characters and sufficient length,Using memorable words only,Including personal details,Repeating patterns",2
+Which of the following is a best practice for authentication?,multiple_choice,Using multi-factor authentication,authentication,easy,"Using multi-factor authentication,Using longer usernames,Changing login pages frequently,Allowing password hints",2
+Which of the following helps prevent unauthorized access?,multiple_choice,Strong authentication mechanisms,authentication,easy,"Strong authentication mechanisms,Frequent account creation,User activity monitoring,Network performance tuning",2
+Regular software updates help prevent security vulnerabilities.,true_false,True,vulnerabilities,easy,,2
+Encryption makes data unreadable without the decryption key.,true_false,True,encryption,easy,,2
+Using the same password for multiple accounts is recommended.,true_false,False,password security,easy,,2
+Social engineering attacks are always technical in nature.,true_false,False,social engineering,easy,,2
+Social media platforms are always safe for sharing personal information.,true_false,False,social engineering,easy,,2
+All passwords should be changed daily.,true_false,False,password security,easy,,2
+All network devices should have default passwords.,true_false,False,password security,easy,,2
+All encryption keys should be stored in plain text.,true_false,False,encryption,easy,,2
+Antivirus software provides 100% protection against all threats.,true_false,False,malware,easy,,2
+Using public computers is safe for sensitive activities.,true_false,False,network security,easy,,2
+What is malware?,multiple_choice,Malicious software designed to harm computers,malware,easy,"Malicious software designed to harm computers,Software that improves performance,Legitimate security software,A type of firewall",2
+What does HTTPS stand for?,multiple_choice,HyperText Transfer Protocol Secure,web security,easy,"HyperText Transfer Protocol Secure,HyperText Transfer Protocol Standard,HyperText Transfer Protocol System,HyperText Transfer Protocol Service",2
+What is a virus?,multiple_choice,A type of malware that replicates itself,malware,easy,"A type of malware that replicates itself,A computer hardware component,A network protocol,A security software",2
+What is social engineering?,multiple_choice,Manipulating people to reveal confidential information,social engineering,easy,"Manipulating people to reveal confidential information,A type of encryption,A network attack,A software bug",2
+What is a strong password?,multiple_choice,A password that is long and complex,password security,easy,"A password that is long and complex,A password that is easy to remember,A password with only letters,A password shared with friends",2
+What is two-factor authentication?,multiple_choice,An authentication method requiring two forms of verification,authentication,easy,"An authentication method requiring two forms of verification,A single password,A username only,No authentication needed",2
+Multi-factor authentication makes accounts more secure.,true_false,True,authentication,easy,,2
+All phishing emails contain obvious spelling errors.,true_false,False,phishing,easy,,2
+What is a secure website?,multiple_choice,A website that uses HTTPS encryption,web security,easy,"A website that uses HTTPS encryption,Any website with a password,A website with many users,A website that loads quickly",2
+Which of the following is important for data privacy?,multiple_choice,Encryption and access controls,data security,easy,"Encryption and access controls,Open file sharing,Public data storage,Minimal authentication",4
+Which of the following is a common sign of a phishing email?,multiple_choice,Urgent language requesting immediate action,phishing,medium,"Urgent language requesting immediate action,Use of official branding and logos,Clear contact information,Consistent sender domain",3
+Which protocol provides secure communication over a network?,multiple_choice,HTTPS,network security,medium,"HTTPS,HTTP with authentication headers,FTP over trusted networks,TCP with checksum validation",3
+What is two-factor authentication (2FA)?,multiple_choice,An authentication method requiring two forms of verification,authentication,medium,"An authentication method requiring two forms of verification,An encryption technique for stored passwords,A backup authentication database,A single password with complexity rules",3
+What does VPN stand for?,multiple_choice,Virtual Private Network,network security,medium,"Virtual Private Network,Verified Public Network,Virtual Protected Node,Variable Packet Network",3
+What is a DDoS attack?,multiple_choice,Distributed Denial of Service attack,network security,medium,"Distributed Denial of Service attack,Data Deletion over Systems,Direct Data Streaming attack,Distributed Database Overload",3
+What is a firewall?,multiple_choice,A network security device that monitors and filters network traffic,network security,medium,"A network security device that monitors and filters network traffic,A system for encrypting stored files,A tool for detecting malware signatures,A centralized authentication server",3
+Which of the following is a type of malware?,multiple_choice,Trojan horse,malware,medium,"Trojan horse,Load balancer,Encryption algorithm,Firewall appliance",3
+What does SSL stand for?,multiple_choice,Secure Sockets Layer,encryption,medium,"Secure Sockets Layer,System Security Logic,Standard Session Link,Secure Software License",3
+Which of the following is a best practice for password security?,multiple_choice,Use unique passwords for each account,password security,medium,"Use unique passwords for each account,Reuse complex passwords across systems,Store passwords in encrypted documents,Change usernames regularly",3
+Which HTTP status code indicates a successful request?,multiple_choice,200,web security,medium,"200,301,403,500",3
+Which of the following is NOT a type of authentication factor?,multiple_choice,Something you forgot,authentication,medium,"Something you know,Something you have,Something you are,Something you forgot",3
+Which of the following is a secure password practice?,multiple_choice,Change passwords periodically,password security,medium,"Change passwords periodically,Reuse previous passwords,Use personal information,Share passwords with trusted users",3
+Which of the following is a common phishing technique?,multiple_choice,Creating fake websites that look legitimate,phishing,medium,"Creating fake websites that look legitimate,Using encrypted email services,Applying digital signatures,Implementing HTTPS",3
+What is a security patch?,multiple_choice,A software update that fixes security vulnerabilities,vulnerabilities,medium,"A software update that fixes security vulnerabilities,A configuration backup,A malware removal tool,A password reset mechanism",3
+What is the primary purpose of a VPN?,multiple_choice,To create a secure encrypted connection over a public network,network security,medium,"To create a secure encrypted connection over a public network,To increase internet speed,To block all external traffic,To replace firewalls",3
+What is a security vulnerability?,multiple_choice,A weakness that can be exploited by attackers,vulnerabilities,medium,"A weakness that can be exploited by attackers,A security policy violation,A monitoring alert,A patched software flaw",3
+Which of the following is a red flag for phishing?,multiple_choice,Requests for sensitive information via email,phishing,medium,"Requests for sensitive information via email,Multi-factor authentication prompts,Emails sent from official portals,Digitally signed messages",3
+What is the purpose of a security policy?,multiple_choice,To establish rules and procedures for protecting information,security testing,medium,"To establish rules and procedures for protecting information,To encrypt all organizational data,To replace security software,To automate user authentication",3
+Which of the following is a secure way to store passwords?,multiple_choice,Using a password manager,password security,medium,"Using a password manager,Storing passwords in browser notes,Saving passwords in spreadsheets,Emailing passwords to yourself",3
+What is the purpose of encryption in cybersecurity?,multiple_choice,To protect data confidentiality,encryption,medium,"To protect data confidentiality,To compress data efficiently,To improve network routing,To manage access permissions",3
+What is a security incident?,multiple_choice,An event that compromises the security of information systems,security testing,medium,"An event that compromises the security of information systems,A routine system update,A scheduled backup,A password expiration event",3
+What is a security breach?,multiple_choice,Unauthorized access to confidential data,security testing,medium,"Unauthorized access to confidential data,A system reboot,A failed login attempt,A configuration change",3
+What is the role of a security analyst?,multiple_choice,To monitor and respond to security threats,security testing,medium,"To monitor and respond to security threats,To develop application features,To manage hardware inventory,To design network cables",3
+Which of the following helps prevent SQL injection?,multiple_choice,Using parameterized queries,web security,medium,"Using parameterized queries,Encrypting database backups,Disabling error messages,Using strong database passwords",3
+What is endpoint security?,multiple_choice,Protecting individual devices from threats,network security,medium,"Protecting individual devices from threats,Securing only network routers,Monitoring cloud infrastructure,Blocking all external traffic",4
+Which of the following is a sign of a secure website?,multiple_choice,HTTPS and valid SSL certificate,web security,medium,"HTTPS and valid SSL certificate,Pop-up security warnings,High traffic volume,Frequent advertisements",4
+What is a security control?,multiple_choice,A measure to reduce security risks,security testing,medium,"A measure to reduce security risks,A type of malware signature,A backup archive,A password requirement only",4
+Which of the following is a type of network attack?,multiple_choice,DDoS attack,network security,medium,"DDoS attack,Password rotation,Software patching,Data encryption",4
+What is security awareness training?,multiple_choice,Educating users about security threats and best practices,security testing,medium,"Educating users about security threats and best practices,Teaching software development,Automating security updates,Replacing security tools",4
+Which of the following is important for incident response?,multiple_choice,Having a response plan ready,security testing,medium,"Having a response plan ready,Disabling all systems immediately,Ignoring minor incidents,Publicly sharing incident details",4
+What is the role of encryption in data protection?,multiple_choice,To ensure data confidentiality and integrity,encryption,medium,"To ensure data confidentiality and integrity,To reduce file sizes,To manage access roles,To improve performance",4
+Which of the following helps protect against phishing?,multiple_choice,Email filtering and user education,phishing,medium,"Email filtering and user education,Opening all attachments carefully,Using only mobile devices,Disabling email previews",4
+What is the purpose of security testing?,multiple_choice,To identify vulnerabilities before attackers do,security testing,medium,"To identify vulnerabilities before attackers do,To create new security tools,To replace firewalls,To slow down systems",4
+Which of the following helps prevent data breaches?,multiple_choice,Strong access controls and encryption,data security,medium,"Strong access controls and encryption,Public data sharing,Minimal authentication checks,Open network access",4
+Which scenario best describes a man-in-the-middle (MITM) attack?,multiple_choice,An attacker intercepts and alters communication between two parties,network security,hard,"An attacker intercepts and alters communication between two parties,An attacker overwhelms a server with traffic,An attacker exploits a software vulnerability locally,An attacker gains access using stolen credentials",5
+Which control is MOST effective against brute-force login attacks?,multiple_choice,Account lockout and rate limiting,authentication,hard,"Account lockout and rate limiting,Longer usernames,User activity logging only,Password expiration policies",5
+A web application is vulnerable to SQL injection. Which fix is MOST appropriate?,multiple_choice,Implementing parameterized queries,web security,hard,"Implementing parameterized queries,Encrypting the database,Applying input length restrictions only,Hiding database error messages",5
+Which attack exploits trust relationships between systems?,multiple_choice,Pass-the-hash,authentication,hard,"Pass-the-hash,Phishing,DNS amplification,ARP spoofing",5
+Which security principle limits user access strictly to what is required?,multiple_choice,Principle of least privilege,authentication,hard,"Principle of least privilege,Defense in depth,Separation of duties,Fail-safe defaults",5
+An attacker captures hashed passwords. Which defense MOST reduces reuse risk?,multiple_choice,Salting and slow hashing algorithms,password security,hard,"Salting and slow hashing algorithms,Encrypting the password database,Increasing password length only,Storing hashes offline",5
+Which protocol is MOST secure for remote administration?,multiple_choice,SSH,network security,hard,"SSH,Telnet,HTTP,FTP",5
+A company wants to detect unauthorized lateral movement inside the network. What should they deploy?,multiple_choice,Network-based intrusion detection system,network security,hard,"Network-based intrusion detection system,Web application firewall,Perimeter firewall only,Anti-virus on endpoints",5
+Which attack specifically targets availability?,multiple_choice,Distributed Denial of Service (DDoS),network security,hard,"Distributed Denial of Service (DDoS),SQL injection,Cross-site scripting,Privilege escalation",5
+What is the PRIMARY risk of using outdated cryptographic algorithms?,multiple_choice,They can be broken with feasible computational effort,encryption,hard,"They can be broken with feasible computational effort,They increase latency,They require larger keys,They are incompatible with modern systems",5
+Which log source is MOST useful for detecting brute-force authentication attempts?,multiple_choice,Authentication logs,security testing,hard,"Authentication logs,Application logs,System performance logs,Backup logs",5
+Which authentication factor is MOST resistant to phishing?,multiple_choice,Biometrics,authentication,hard,"Biometrics,One-time passwords via email,Static passwords,Security questions",5
+An attacker sends emails appearing to be from the CEO requesting urgent wire transfers. This is an example of?,multiple_choice,Whaling,phishing,hard,"Whaling,Spear phishing,Vishing,Clone phishing",5
+Which control helps ensure data integrity during transmission?,multiple_choice,Message authentication codes,encryption,hard,"Message authentication codes,Data compression,Network segmentation,Access control lists",5
+Which technique prevents attackers from replaying captured authentication messages?,multiple_choice,Using nonces or timestamps,authentication,hard,"Using nonces or timestamps,Encrypting the payload only,Increasing key size,Hashing credentials",5
+A security team wants to reduce attack surface. What is the BEST action?,multiple_choice,Disable unnecessary services and ports,network security,hard,"Disable unnecessary services and ports,Increase firewall logging,Deploy intrusion detection,Add additional authentication prompts",5
+Which vulnerability results from improper input validation?,multiple_choice,Cross-site scripting (XSS),web security,hard,"Cross-site scripting (XSS),DDoS,ARP poisoning,Brute-force attack",5
+What does a Web Application Firewall (WAF) primarily protect against?,multiple_choice,Application-layer attacks,web security,hard,"Application-layer attacks,Network flooding attacks,Physical intrusion,Credential theft via malware",5
+Which security model enforces access based on labels and classifications?,multiple_choice,Mandatory Access Control (MAC),authentication,hard,"Mandatory Access Control (MAC),Discretionary Access Control (DAC),Role-Based Access Control (RBAC),Rule-Based Access Control",5
+Which incident response phase focuses on limiting damage?,multiple_choice,Containment,security testing,hard,"Containment,Preparation,Recovery,Lessons learned",5
+Which encryption method is typically used for data at rest?,multiple_choice,Symmetric encryption,encryption,hard,"Symmetric encryption,Asymmetric encryption,Hashing only,Tokenization exclusively",5
+Which attack leverages poisoned ARP caches?,multiple_choice,ARP spoofing,network security,hard,"ARP spoofing,DNS tunneling,IP fragmentation,MAC flooding",5
+Why is defense in depth effective?,multiple_choice,It provides multiple layers of security controls,general,hard,"It provides multiple layers of security controls,It replaces the need for monitoring,It eliminates vulnerabilities,It guarantees attack prevention",5
+Which mechanism ensures non-repudiation?,multiple_choice,Digital signatures,encryption,hard,"Digital signatures,Symmetric encryption,Hashing,Access control lists",5
+Which vulnerability allows attackers to execute commands on a server?,multiple_choice,Remote code execution,web security,hard,"Remote code execution,Session fixation,Clickjacking,Security misconfiguration",5
+Which metric BEST measures the effectiveness of incident detection?,multiple_choice,Mean time to detect (MTTD),security testing,hard,"Mean time to detect (MTTD),Number of alerts generated,Log storage size,Patch frequency",5
+Which authentication method is MOST secure for administrators?,multiple_choice,Hardware-based multi-factor authentication,authentication,hard,"Hardware-based multi-factor authentication,Complex passwords only,Biometric-only authentication,Single sign-on",5
+Which threat model focuses on STRIDE categories?,multiple_choice,Microsoft threat modeling,general,hard,"Microsoft threat modeling,OWASP Top 10,NIST risk framework,ISO 27001",5
+Which attack abuses excessive privileges?,multiple_choice,Privilege escalation,authentication,hard,"Privilege escalation,Phishing,Replay attack,Session hijacking",5
+A TLS connection is established but later found vulnerable to downgrade attacks. Which failure MOST likely caused this?,multiple_choice,Lack of strict protocol version enforcement,encryption,very_hard,"Lack of strict protocol version enforcement,Use of symmetric encryption for bulk data,Improper certificate chain length,Absence of forward secrecy",6
+An attacker gains access using stolen NTLM hashes without cracking them. Which technique was used?,multiple_choice,Pass-the-hash,authentication,very_hard,"Pass-the-hash,Credential stuffing,Kerberoasting,Password spraying",6
+A SOC detects internal DNS requests to random-looking subdomains at regular intervals. This MOST likely indicates?,multiple_choice,DNS tunneling,network security,very_hard,"DNS tunneling,Fast-flux hosting,Domain hijacking,ARP spoofing",6
+Which configuration BEST enforces Zero Trust principles?,multiple_choice,Continuous authentication and microsegmentation,network security,very_hard,"Continuous authentication and microsegmentation,Perimeter firewalls with VPN access,Role-based access only,Network intrusion detection",6
+A signed executable is modified but still appears trusted by users. What attack is MOST likely?,multiple_choice,Certificate misuse or stolen code-signing keys,encryption,very_hard,"Certificate misuse or stolen code-signing keys,Hash collision attack,Replay attack,Privilege escalation",6
+Which log correlation MOST strongly indicates lateral movement?,multiple_choice,Multiple authentication successes across hosts from a single account,security testing,very_hard,"Multiple authentication successes across hosts from a single account,High outbound traffic volume,Repeated DNS lookup failures,Increased CPU usage",6
+An attacker bypasses ASLR and DEP to execute shellcode. What does this imply?,multiple_choice,Use of a memory disclosure or ROP chain,web security,very_hard,"Use of a memory disclosure or ROP chain,Weak password enforcement,Missing TLS encryption,Improper firewall rules",6
+Which scenario BEST demonstrates a supply chain attack?,multiple_choice,Malicious code introduced through a trusted software update,malware,very_hard,"Malicious code introduced through a trusted software update,Exploiting a public-facing vulnerability,Phishing a system administrator,Brute-forcing an admin account",6
+Which cryptographic failure allows two different inputs to produce the same hash?,multiple_choice,Collision vulnerability,encryption,very_hard,"Collision vulnerability,Preimage resistance failure,Key exhaustion,Entropy depletion",6
+An organization encrypts data but loses access after a ransomware attack. What control was MOST likely missing?,multiple_choice,Offline and tested key backups,data security,very_hard,"Offline and tested key backups,Longer encryption keys,Stronger hashing algorithms,Role-based access control",6
+Which technique allows attackers to maintain access while avoiding malware detection?,multiple_choice,Living off the land techniques,malware,very_hard,"Living off the land techniques,Signature-based exploitation,Payload obfuscation only,Kernel-level rootkits",6
+Why is mutual TLS (mTLS) stronger than standard TLS?,multiple_choice,Both client and server authenticate each other,encryption,very_hard,"Both client and server authenticate each other,It uses longer encryption keys,It eliminates certificate authorities,It prevents all MITM attacks",6
+Which metric BEST indicates attacker dwell time?,multiple_choice,Time between initial compromise and detection,security testing,very_hard,"Time between initial compromise and detection,Number of alerts triggered,Patch deployment frequency,Mean time to recovery",6
+An attacker forges Kerberos tickets using the krbtgt hash. What attack is this?,multiple_choice,Golden Ticket attack,authentication,very_hard,"Golden Ticket attack,Silver Ticket attack,Pass-the-ticket,Kerberoasting",6
+Which control MOST effectively limits blast radius after a breach?,multiple_choice,Network microsegmentation,network security,very_hard,"Network microsegmentation,Centralized logging,Regular vulnerability scanning,Perimeter firewalls",6
+Which vulnerability allows attackers to escape a container to the host OS?,multiple_choice,Container breakout,web security,very_hard,"Container breakout,Privilege escalation,Session fixation,Directory traversal",6
+Why is ECB mode insecure for encryption?,multiple_choice,It reveals patterns in plaintext,encryption,very_hard,"It reveals patterns in plaintext,It uses short keys,It lacks authentication,It is vulnerable to hash collisions",6
+An IDS generates many false positives but few detections. What tuning issue exists?,multiple_choice,Detection thresholds are improperly calibrated,security testing,very_hard,"Detection thresholds are improperly calibrated,Insufficient log retention,Weak encryption algorithms,Missing authentication controls",6
+Which attack abuses cloud IAM misconfigurations MOST commonly?,multiple_choice,Privilege escalation via overly permissive roles,authentication,very_hard,"Privilege escalation via overly permissive roles,SQL injection,ARP spoofing,DNS cache poisoning",6
+Why are hardware security modules (HSMs) used for key management?,multiple_choice,They protect cryptographic keys from extraction,data security,very_hard,"They protect cryptographic keys from extraction,They increase encryption speed,They replace certificate authorities,They eliminate the need for backups",6
+Which scenario BEST indicates command-and-control (C2) beaconing?,multiple_choice,Regular outbound connections at fixed intervals,malware,very_hard,"Regular outbound connections at fixed intervals,High inbound traffic spikes,Random port scanning,Large file uploads",6
+Which attack exploits XML external entities?,multiple_choice,XXE attack,web security,very_hard,"XXE attack,CSRF,Clickjacking,IDOR",6
+Which defense MOST directly prevents credential replay attacks?,multiple_choice,Challenge-response authentication,authentication,very_hard,"Challenge-response authentication,Encrypted password storage,Longer password length,User account lockout",6
+Which principle ensures systems fail securely?,multiple_choice,Fail-safe defaults,general,very_hard,"Fail-safe defaults,Defense in depth,Least privilege,Separation of duties",6
+Which action BEST validates an incident is fully eradicated?,multiple_choice,Threat hunting after remediation,security testing,very_hard,"Threat hunting after remediation,Restoring from backups,Changing passwords,Reimaging infected hosts only",6
+Which vulnerability allows access to unauthorized objects by manipulating IDs?,multiple_choice,Insecure Direct Object Reference (IDOR),web security,very_hard,"Insecure Direct Object Reference (IDOR),Broken authentication,Clickjacking,Open redirect",6
+Which attack uses compromised websites to infect visitors?,multiple_choice,Watering hole attack,malware,very_hard,"Watering hole attack,Typosquatting,Pharming,Smishing",6
+Which security goal is violated when data is altered without authorization?,multiple_choice,Integrity,general,very_hard,"Integrity,Confidentiality,Availability,Non-repudiation",6

@@ -34,9 +34,9 @@ async function generateCybersecurityQuestion(topic = null, questionType = null, 
   let prompt = `Generate a ${difficulty} difficulty cybersecurity question about ${topic}.\n\nQuestion type: ${questionType}\n\nRequirements:\n- Make it educational and practical\n- Focus on real-world scenarios when possible\n- Ensure the question tests understanding, not just memorization\n\n`;
 
   if (questionType === 'multiple_choice') {
-    prompt += `Format the response as JSON with:\n{\n    "question_text": "The question text",\n    "question_type": "multiple_choice",\n    "options": ["Option A", "Option B", "Option C", "Option D"],\n    "correct_answer": "Option A",\n    "category": "topic name",\n    "difficulty": "easy/medium/hard"\n}`;
+    prompt += `Format the response as JSON with:\n{\n    "question_text": "The question text",\n    "question_type": "multiple_choice",\n    "options": ["Option A", "Option B", "Option C", "Option D"],\n    "correct_answer": "Option A",\n    "category": "topic name",\n    "difficulty": "easy/medium/hard/very_hard"\n}`;
   } else {
-    prompt += `Format the response as JSON with:\n{\n    "question_text": "The statement to evaluate",\n    "question_type": "true_false",\n    "options": ["True", "False"],\n    "correct_answer": "True or False",\n    "category": "topic name",\n    "difficulty": "easy/medium/hard"\n}`;
+    prompt += `Format the response as JSON with:\n{\n    "question_text": "The statement to evaluate",\n    "question_type": "true_false",\n    "options": ["True", "False"],\n    "correct_answer": "True or False",\n    "category": "topic name",\n    "difficulty": "easy/medium/hard/very_hard"\n}`;
   }
 
   try {

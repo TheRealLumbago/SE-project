@@ -107,6 +107,18 @@ router.post('/login', async (req, res) => {
       await db.runAsync('UPDATE user SET daily_streak = ? WHERE id = ?', [0, user.id]);
       user.daily_streak = 0;
     }
+    
+    // Ensure admins have 10000 XP and level 7
+    if (user.role === 'admin') {
+      if (user.total_xp < 10000 || user.current_level < 7) {
+        await db.runAsync(
+          'UPDATE user SET total_xp = 10000, current_level = 7 WHERE id = ?',
+          [user.id]
+        );
+        user.total_xp = 10000;
+        user.current_level = 7;
+      }
+    }
 
     res.json({
       message: 'Login successful',
@@ -141,6 +153,19 @@ router.get('/me', authenticateToken, async (req, res) => {
     if (!user) {
       return res.status(404).json({ error: 'User not found' });
     }
+    
+    // Ensure admins have 10000 XP and level 7
+    if (user.role === 'admin') {
+      if (user.total_xp < 10000 || user.current_level < 7) {
+        await db.runAsync(
+          'UPDATE user SET total_xp = 10000, current_level = 7 WHERE id = ?',
+          [user.id]
+        );
+        user.total_xp = 10000;
+        user.current_level = 7;
+      }
+    }
+    
     res.json({ user });
   } catch (error) {
     console.error('Get user error:', error);
